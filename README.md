@@ -33,7 +33,23 @@ npm install
 3. Create ENV file
 
 ```sh
-touch .env
+cp exmaple.env .env
+```
+
+4. Create .gitignore file
+
+```sh
+touch .gitignore
+```
+
+5. Add node_modules and .env to .gitignore
+
+```sh
+echo node_modules >> .gitignore
+```
+
+```sh
+echo .env >> .gitignore
 ```
 
 ## Features
