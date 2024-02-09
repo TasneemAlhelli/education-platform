@@ -4,6 +4,7 @@ require("./config/database");
 const Class = require("./models/class");
 const User = require("./models/user");
 
+//create a class in the DB
 const createClass = async () => {
   await Class.create({
     name: "Algebra",
@@ -14,4 +15,7 @@ const createClass = async () => {
   });
 }
 
-createClass();
+//call the function to create class
+// createClass();
+
+//create a user in the DB
