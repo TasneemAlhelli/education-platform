@@ -1,7 +1,11 @@
 const Class = require('../models/class')
 
 const newClass = (req, res) => {
-  res.render('classes/new', { title: 'Create Class' })
+  if (req.user.role == 'teacher') {
+    res.render('classes/new', { title: 'Create Class' })
+  } else {
+    res.redirect('/classes')
+  }
 }
 
 const create = async (req, res) => {
@@ -16,11 +20,27 @@ const create = async (req, res) => {
 
 const index = async (req, res) => {
   const allClasses = await Class.find({})
-  res.render('classes/index', { title: 'All Classes', allClasses })
+  let studentRole = ''
+  if (req.user.role == 'student') {
+    studentRole = 'student'
+  }
+  res.render('classes/index', { title: 'All Classes', allClasses, studentRole })
+}
+
+const show = async (req, res) => {
+  console.log(req.body)
+
+  if (req.body.studentRole == 'student') {
+    const classItem = await Class.findById(req.params.id)
+    classItem.student.push(req.body.user._id)
+    await classItem.save()
+  }
+  res.render('classes/show', { title: 'show page' })
 }
 
 module.exports = {
   new: newClass,
   create,
-  index
+  index,
+  show
 }

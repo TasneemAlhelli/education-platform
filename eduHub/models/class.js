@@ -25,7 +25,8 @@ const classSchema = new Schema({
   teacher: {
     type: Schema.Types.ObjectId,
     ref: 'User'
-  }
+  },
+  student: [{ type: Schema.Types.ObjectId, ref: 'User' }]
 })
 
 module.exports = mongoose.model('Class', classSchema)

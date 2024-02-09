@@ -9,5 +9,7 @@ router.get('/', classesCtrl.index)
 router.get('/new', classesCtrl.new)
 //post /classes
 router.post('/new', classesCtrl.create)
+// get /classes/:id
+router.get('/:id', classesCtrl.show)
 
 module.exports = router

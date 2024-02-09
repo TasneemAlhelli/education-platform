@@ -6,7 +6,11 @@
 <ol>
   <li> <%= classDetails.name %></li>
   <li> <%= classDetails.description %></li>
-  <a href="view">View</a>
+  <a href="/classes/<%= classDetails._id %>">View</a>
+  
+  <% if(studentRole == 'student'){ %>
+    <a href="/classes/<%= classDetails._id %>">Enroll</a>
+  <% } %>
 </ol>
 <% }) %>
 
