@@ -10,6 +10,7 @@ const userSchema = new Schema(
     },
     email: String,
     avatar: String,
+    onboarding: { type: Boolean, default: false },
     role: {
       type: String,
       enum: ['teacher', 'student'],

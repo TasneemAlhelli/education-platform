@@ -4,14 +4,16 @@ const passport = require('passport')
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Express' })
+  if (req.user && !req.user.onboarding) {
+    res.render('onboarding', { title: 'Onboarding', user: req.user })
+  } else {
+    res.render('index', { title: 'Express' })
+  }
 })
 
 router.get(
   '/auth/google',
-  passport.authenticate('google', {
-    scope: ['profile', 'email']
-  })
+  passport.authenticate('google', { scope: ['profile', 'email'] })
 )
 
 router.get(
