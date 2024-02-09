@@ -1,4 +1,14 @@
 body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  height: 100vh;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 5px;
+  align-items: center;
   padding: 50px;
   font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
 }
@@ -42,4 +52,64 @@ button {
 button:hover {
   background-color: #2980b9;
   border-color: #2980b9;
+}
+
+#flexy {
+  display: flex;
+  justify-content: center;
+}
+
+.navigationBtn {
+  padding: 5px;
+  font-size: 20px;
+}
+
+.btn {
+  padding: 5px;
+  text-decoration: none;
+  color: gray;
+  height: 100%;
+  font-size: 20px;
+}
+
+.btn:hover {
+  color: black;
+  border-bottom: solid black 2px;
+}
+
+.logoNav {
+  width: 100px;
+  margin-right: 20px;;
+}
+
+.wrapContent {
+  height: 500px;
+  background-image: url("../images/homepageApple.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+}
+
+.motto {
+  grid-area: 2 / 2 / 6 / 6;
+  font-size: 30px;
+}
+
+.wrapClasses {
+  width: 70%;
+}
+
+.gridClasses {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+}
+
+.classImg > img {
+  width: 300px;
 }
