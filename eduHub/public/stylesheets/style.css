@@ -11,6 +11,11 @@ nav {
   align-items: center;
 }
 
+#flexy {
+  display: flex;
+  justify-content: center;
+}
+
 .navigationBtn {
   padding: 5px;
   font-size: 20px;
@@ -34,7 +39,7 @@ nav {
 }
 
 .wrapContent {
-  height: 400px;
+  height: 500px;
   background-image: url("../images/homepageApple.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -42,10 +47,15 @@ nav {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
 }
 
 .motto {
-  grid-area: 2 / 1 / 5 / 5;
+  grid-area: 2 / 2 / 6 / 6;
+  font-size: 30px;
+}
+
+.wrapClasses {
+  width: 70%;
 }
