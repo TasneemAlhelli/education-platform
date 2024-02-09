@@ -7,7 +7,7 @@ router.get('/', function (req, res, next) {
   if (req.user && !req.user.onboarding) {
     res.render('onboarding', { title: 'Onboarding', user: req.user })
   } else {
-    res.render('index', { title: 'Express' })
+    res.render('index', { title: 'Express', user: req.user })
   }
 })
 
