@@ -5,6 +5,8 @@ const Schema = mongoose.Schema
 const classPosts = new Schema({
   message: {type: String},
   heading: {type: String},
+}, {
+  timestamps: true
 });
 
 const classSchema = new Schema({
@@ -34,6 +36,8 @@ const classSchema = new Schema({
   },
   posts: [classPosts],
   students: {type: [Schema.Types.ObjectId]}
+}, {
+  timestamps: true
 })
 
 module.exports = mongoose.model('Class', classSchema)
