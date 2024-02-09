@@ -13,39 +13,39 @@ nav {
 
 .navigationBtn {
   padding: 5px;
+  font-size: 20px;
 }
 
 .btn {
   padding: 5px;
   text-decoration: none;
-  color: white;
+  color: gray;
   height: 100%;
+  font-size: 20px;
 }
 .btn:hover {
-  color: darkblue;
-  border-bottom: solid darkblue 2px;
+  color: black;
+  border-bottom: solid black 2px;
 }
-
-/* .wrapContent {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-} */
 
 .logoNav {
   width: 100px;
   margin-right: 20px;;
 }
 
-.gridItem {
-  width: 100%;
-  height: 100%;
-}
-
 .wrapContent {
-  height: 100vh;
-  background-image: url("../images/homepagebg.jpg");
+  height: 400px;
+  background-image: url("../images/homepageApple.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+}
+
+.motto {
+  grid-area: 2 / 1 / 5 / 5;
 }
