@@ -6,8 +6,16 @@
 <ol>
   <li> <%= classDetails.name %></li>
   <li> <%= classDetails.description %></li>
-  <a href="view">View</a>
+  <a href="/classes/<%= classDetails._id %>">View</a>
+
+  <% if(userDetails.role == 'student' && !classDetails.student.includes(userDetails._id.toString())){ %>
+    <form method="POST" action="/classes/<%= classDetails._id %>">
+      <button type="submit">Enroll</button>
+    </form>
+  <% } %>
 </ol>
+
+
 <% }) %>
 
 <%- include('../partials/footer.ejs') %>

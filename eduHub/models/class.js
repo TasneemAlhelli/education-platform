@@ -34,8 +34,8 @@ const classSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
+  student: [{ type: Schema.Types.ObjectId, ref: 'User' }]
   posts: [classPosts],
-  students: {type: [Schema.Types.ObjectId]}
 }, {
   timestamps: true
 })

@@ -1,7 +1,11 @@
 const Class = require('../models/class')
 
 const newClass = (req, res) => {
-  res.render('classes/new', { title: 'Create Class' })
+  if (req.user.role == 'teacher') {
+    res.render('classes/new', { title: 'Create Class' })
+  } else {
+    res.redirect('/classes')
+  }
 }
 
 const create = async (req, res) => {
@@ -16,11 +20,37 @@ const create = async (req, res) => {
 
 const index = async (req, res) => {
   const allClasses = await Class.find({})
-  res.render('classes/index', { title: 'All Classes', allClasses })
+  console.log(allClasses)
+
+  const userDetails = req.user
+
+  res.render('classes/index', {
+    title: 'All Classes',
+    allClasses,
+    userDetails
+  })
+}
+
+const show = async (req, res) => {
+  res.render('classes/show', { title: 'show page' })
+}
+
+const enroll = async (req, res) => {
+  try {
+    const classItem = await Class.findById(req.params.id)
+    classItem.student.push(req.user._id)
+    await classItem.save()
+
+    res.render('classes/show', { title: 'show page' })
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 module.exports = {
   new: newClass,
   create,
-  index
+  index,
+  show,
+  enroll
 }
