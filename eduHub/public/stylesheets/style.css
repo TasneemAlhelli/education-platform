@@ -28,6 +28,7 @@ nav {
   height: 100%;
   font-size: 20px;
 }
+
 .btn:hover {
   color: black;
   border-bottom: solid black 2px;
@@ -58,4 +59,14 @@ nav {
 
 .wrapClasses {
   width: 70%;
+}
+
+.gridClasses {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+}
+
+.classImg > img {
+  width: 300px;
 }
