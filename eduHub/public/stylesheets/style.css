@@ -1,8 +1,51 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  height: 100vh;
 }
 
-a {
-  color: #00B7FF;
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 5px;
+  align-items: center;
+}
+
+.navigationBtn {
+  padding: 5px;
+}
+
+.btn {
+  padding: 5px;
+  text-decoration: none;
+  color: white;
+  height: 100%;
+}
+.btn:hover {
+  color: darkblue;
+  border-bottom: solid darkblue 2px;
+}
+
+/* .wrapContent {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+} */
+
+.logoNav {
+  width: 100px;
+  margin-right: 20px;;
+}
+
+.gridItem {
+  width: 100%;
+  height: 100%;
+}
+
+.wrapContent {
+  height: 100vh;
+  background-image: url("../images/homepagebg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
