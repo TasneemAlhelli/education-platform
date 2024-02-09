@@ -1,0 +1,13 @@
+<%- include('../partials/header.ejs') %>
+
+<h2>All Classes</h2>
+
+<% allClasses.forEach((classDetails) => { %>
+<ol>
+  <li> <%= classDetails.name %></li>
+  <li> <%= classDetails.description %></li>
+  <a href="view">View</a>
+</ol>
+<% }) %>
+
+<%- include('../partials/footer.ejs') %>
