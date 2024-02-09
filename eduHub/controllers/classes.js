@@ -20,7 +20,6 @@ const create = async (req, res) => {
 
 const index = async (req, res) => {
   const allClasses = await Class.find({})
-  console.log(allClasses)
 
   const userDetails = req.user
 
