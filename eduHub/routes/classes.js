@@ -11,5 +11,7 @@ router.get('/new', classesCtrl.new)
 router.post('/new', classesCtrl.create)
 // get /classes/:id
 router.get('/:id', classesCtrl.show)
+//post /classes/:id
+router.post('/:id', classesCtrl.enroll)
 
 module.exports = router

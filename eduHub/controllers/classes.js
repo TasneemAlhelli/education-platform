@@ -20,27 +20,37 @@ const create = async (req, res) => {
 
 const index = async (req, res) => {
   const allClasses = await Class.find({})
-  let studentRole = ''
-  if (req.user.role == 'student') {
-    studentRole = 'student'
-  }
-  res.render('classes/index', { title: 'All Classes', allClasses, studentRole })
+  console.log(allClasses)
+
+  const userDetails = req.user
+
+  res.render('classes/index', {
+    title: 'All Classes',
+    allClasses,
+    userDetails
+  })
 }
 
 const show = async (req, res) => {
-  console.log(req.body)
-
-  if (req.body.studentRole == 'student') {
-    const classItem = await Class.findById(req.params.id)
-    classItem.student.push(req.body.user._id)
-    await classItem.save()
-  }
   res.render('classes/show', { title: 'show page' })
+}
+
+const enroll = async (req, res) => {
+  try {
+    const classItem = await Class.findById(req.params.id)
+    classItem.student.push(req.user._id)
+    await classItem.save()
+
+    res.render('classes/show', { title: 'show page' })
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 module.exports = {
   new: newClass,
   create,
   index,
-  show
+  show,
+  enroll
 }
