@@ -1,6 +1,12 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
+// schema for posts embedded in the class schema
+const classPosts = new Schema({
+  message: {type: String},
+  heading: {type: String},
+});
+
 const classSchema = new Schema({
   name: {
     type: String,
@@ -25,7 +31,8 @@ const classSchema = new Schema({
   teacher: {
     type: Schema.Types.ObjectId,
     ref: 'User'
-  }
+  },
+  posts: [classPosts]
 })
 
 module.exports = mongoose.model('Class', classSchema)
