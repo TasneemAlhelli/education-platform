@@ -41,6 +41,28 @@ const create = async (req, res) => {
   }
 }
 
+const editClass = async (req, res) => {
+  try {
+    const classInfo = await Class.findById(req.params.id)
+    res.render('classes/edit', { title: 'Update Class', classInfo })
+  } catch (err) {
+    console.log(err)
+    res.redirect(`/classes/myclasses`)
+  }
+}
+
+const update = async (req, res) => {
+  try {
+    const classInfo = await Class.findById(req.params.id)
+
+    await classInfo.updateOne(req.body)
+    res.redirect('/classes/myclasses')
+  } catch (err) {
+    console.log(err)
+    res.redirect('/classes/myclasses')
+  }
+}
+
 const show = async (req, res) => {
   res.render('classes/show', { title: 'show page' })
 }
@@ -70,5 +92,7 @@ module.exports = {
   index,
   show,
   enroll,
+  edit: editClass,
+  update,
   delete: deleteClass
 }
