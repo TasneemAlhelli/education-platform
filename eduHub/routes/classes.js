@@ -12,7 +12,7 @@ router.get('/myclasses', classesCtrl.index)
 //get /classes/new
 router.get('/new', classesCtrl.new)
 //post /classes
-router.post('/', classesCtrl.create)
+router.post('/myclasses', classesCtrl.create)
 // get /classes/:id
 router.get('/:id', classesCtrl.show)
 //post /classes/:id

@@ -35,7 +35,7 @@ const create = async (req, res) => {
   req.body.teacher = req.user._id
   try {
     await Class.create(req.body)
-    res.redirect('/classes')
+    res.redirect('/classes/myclasses')
   } catch (error) {
     console.log(error)
   }
