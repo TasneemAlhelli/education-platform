@@ -1,51 +1,66 @@
 <%- include('../partials/header') %>
-<%- include('../partials/navbar') %>
+  <%- include('../partials/navbar') %>
 
-<h2><%= title %></h2>
-<% if(classFilter == '/classes') { %>
-  <% allClasses.forEach((classDetails) => { %>
-    <ol>
-      <li> <%= classDetails.name %></li>
-      <li> <%= classDetails.description %></li>
-      <a href="/classes/<%= classDetails._id %>">View</a>
-    
-      <% if(user.role == 'student' && !classDetails.student.includes(user._id.toString())){ %>
-        <form method="POST" action="/classes/<%= classDetails._id %>">
-          <button type="submit">Enroll</button>
-        </form>
-      <% } %>
-    </ol>
-  <% }) %>
-<% } else if (classFilter == '/classes/myclasses') { %>
-  <% allClasses.forEach((classDetails) => { %>
-    <ol>
-      <% if((user.role == 'teacher' && classDetails.teacher._id.toString() == (user._id.toString()))) { %>
+    <h2>
+      <%= title %>
+    </h2>
+    <% if(classFilter=='/classes' ) { %>
+      <% allClasses.forEach((classDetails)=> { %>
+        <ol>
+          <li>
+            <%= classDetails.name %>
+          </li>
+          <li>
+            <%= classDetails.description %>
+          </li>
+          <a href="/classes/<%= classDetails._id %>">View</a>
+          <p><a href="/classes/<%= classDetails._id %>/newPost">Posts</a></p>
 
-        <a href="/classes/new">Create</a>
+          <% if(user.role=='student' && !classDetails.student.includes(user._id.toString())){ %>
+            <form method="POST" action="/classes/<%= classDetails._id %>">
+              <button type="submit">Enroll</button>
+            </form>
+            <% } %>
+        </ol>
+        <% }) %>
+          <% } else if (classFilter=='/classes/myclasses' ) { %>
+            <% allClasses.forEach((classDetails)=> { %>
+              <ol>
+                <% if((user.role=='teacher' && classDetails.teacher._id.toString()==(user._id.toString()))) { %>
 
-        <li> <%= classDetails.name %></li>
-        <li> <%= classDetails.description %></li>
-        <a href="/classes/<%= classDetails._id %>">View</a>
-        
-        <!--Edit button-->
-        <form action="/classes/<%= classDetails._id %>" method="GET">
-          <button type="submit">Edit</button>
-        </form>
-        <!--Edit button-->
+                  <a href="/classes/new">Create</a>
 
-        <!--Delete button-->
-        <form action="./myclasses/<%= classDetails._id %>?_method=DELETE"  method="POST">
-          <button type="submit">Delete</button>
-        </form>
-      <% } %>
-        <!--Delete button-->
+                  <li>
+                    <%= classDetails.name %>
+                  </li>
+                  <li>
+                    <%= classDetails.description %>
+                  </li>
+                  <a href="/classes/<%= classDetails._id %>">View</a>
 
-      <% if(user.role == 'student' && classDetails.student.includes(user._id.toString())) { %>
-        <li> <%= classDetails.name %></li>
-        <li> <%= classDetails.description %></li>
-        <a href="/classes/<%= classDetails._id %>">View</a>
-      <% } %>
-    </ol>
-  <% }) %>
-<% } %>
-<%- include('../partials/footer.ejs') %>
+                  <!--Edit button-->
+                  <form action="/classes/<%= classDetails._id %>" method="GET">
+                    <button type="submit">Edit</button>
+                  </form>
+                  <!--Edit button-->
+
+                  <!--Delete button-->
+                  <form action="./myclasses/<%= classDetails._id %>?_method=DELETE" method="POST">
+                    <button type="submit">Delete</button>
+                  </form>
+                  <% } %>
+                    <!--Delete button-->
+
+                    <% if(user.role=='student' && classDetails.student.includes(user._id.toString())) { %>
+                      <li>
+                        <%= classDetails.name %>
+                      </li>
+                      <li>
+                        <%= classDetails.description %>
+                      </li>
+                      <a href="/classes/<%= classDetails._id %>">View</a>
+                      <% } %>
+              </ol>
+              <% }) %>
+                <% } %>
+                  <%- include('../partials/footer.ejs') %>
