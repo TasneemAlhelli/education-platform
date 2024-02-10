@@ -1,0 +1,39 @@
+<%- include('../partials/header.ejs') %>
+<%- include('../partials/navbar.ejs') %>
+  <h2>Edit Class</h2>
+  <form action="/classes/<%= classInfo._id %>?_method=PUT" method="POST">
+    <input class="newInputs" type="text" name="name" value="<%= classInfo.name %>" placeholder="Class Name" required>
+    <br>
+
+    <textarea
+    class="newInputs" type="text" name="description" placeholder="Class description"><%= classInfo.description %></textarea>
+    <br>
+
+    <label for="startDate">Start Date</label>
+    <%
+      let startDate = new Date(classInfo.startDate)
+      startDate = startDate.toISOString().split('T')[0];
+      let endDate = new Date(classInfo.endDate)
+      endDate = endDate.toISOString().split('T')[0];
+    %>
+    <input type="date" name="startDate" value="<%= startDate %>">
+    <label for="endDate">End Date</label>
+    <input type="date" name="endDate" value="<%= endDate %>">
+    <br>
+
+    <label for="grade">grade</label>
+    <% const grades = ['Primary', 'Intermediate', 'Secondary'] %>
+    <select class="newInputs" name="grade">
+      <% grades.forEach((grade) => { 
+        if (grade === classInfo.grade) { %>
+          <option value="<%= grade %>" selected><%= grade %></option>
+        <% } else { %>
+          <option value="<%= grade %>"><%= grade %></option>
+        <% }
+      }) %>
+      </select>
+    <br>
+
+    <button id="submit" type="submit">Edit Class</button>
+  </form>
+<%- include('../partials/footer.ejs') %>
