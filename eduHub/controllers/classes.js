@@ -4,7 +4,6 @@ const index = async (req, res) => {
   const classFilter = req._parsedOriginalUrl.pathname
   console.log('request', req._parsedOriginalUrl.pathname)
   let allClasses = await Class.find({}).populate('teacher')
-  let userDetails = req.user
 
   if (classFilter == '/classes') {
     res.render('classes/index', {
@@ -13,18 +12,20 @@ const index = async (req, res) => {
       user: req.user,
       classFilter
     })
-  } else {
+  } else if (classFilter == '/classes/myclasses' && req.user) {
     res.render('classes/index', {
       title: 'My Classes',
       allClasses,
       user: req.user,
       classFilter
     })
+  } else {
+    res.redirect('/classes')
   }
 }
 
 const newClass = (req, res) => {
-  if (req.user.role == 'teacher') {
+  if (req.user && req.user.role == 'teacher') {
     res.render('classes/new', { title: 'Create Class' })
   } else {
     res.redirect('/classes')

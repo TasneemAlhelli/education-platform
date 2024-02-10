@@ -41,6 +41,7 @@
       <% }) %>
   </ul>
 
+  <!--********************My classes page**********************-->
 
 
   <% }else if (classFilter == '/classes/myclasses') { %>
@@ -49,7 +50,7 @@
 
       <div class="myClass-header">
         <h2><%= title %></h2>
-        <% if(user.role == 'teacher'){ %>
+        <% if(user && user.role == 'teacher'){ %>
           <a class="createLink" href="/classes/new">Create</a>
         <% } %>
       </div>
@@ -58,7 +59,7 @@
 
       <% allClasses.forEach((classDetails) => { %>
         
-          <% if((user.role == 'teacher' && classDetails.teacher._id.toString() == (user._id.toString()))) { %>
+          <% if((user && user.role == 'teacher' && classDetails.teacher._id.toString() == (user._id.toString()))) { %>
             <li class="item">
 
             <div class="task">
@@ -101,7 +102,7 @@
   
           <% } %>
   
-          <% if(user.role == 'student' && classDetails.student.includes(user._id.toString())) { %>
+          <% if(user && user.role == 'student' && classDetails.student.includes(user._id.toString())) { %>
             <li class="item">
   
             <div class="task">
