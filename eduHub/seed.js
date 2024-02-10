@@ -26,9 +26,10 @@ const createUser = async () => {
     googleId: "111",
     email: "John@doe.com",
     avatar: "None",
+    onboarding: true,
     role: "teacher"
   });
 }
 
 //call the function to create a user
-createUser();
+// createUser();
