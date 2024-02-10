@@ -18,4 +18,18 @@ const createClass = async () => {
 //call the function to create class
 // createClass();
 
-//create a user in the DB
+//create a user in the DB, no need its done through google
+
+const createUser = async () => {
+  await User.create({
+    name: "John Doe",
+    googleId: "111",
+    email: "John@doe.com",
+    avatar: "None",
+    onboarding: true,
+    role: "teacher"
+  });
+}
+
+//call the function to create a user
+// createUser();
