@@ -8,14 +8,14 @@ const newPostForm = (req, res) => {
 
 //save to DB the new post
 const addPostToClass = async (req, res) => {
-  message = req.body.message;
-  heading = req.body.heading;
-  classId = req.params.classId;
+  let message = req.body.message;
+  let heading = req.body.heading;
+  let classId = req.params.classId;
   
   const subject = await Class.findById(classId);
-  console.log("🚀 ~ addPostToClass ~ subject:", subject)
-  res.send("post posted");
-
+  subject.posts.push({heading: heading, message: message});
+  await subject.save();
+  res.redirect("/");
 }
 
 module.exports = {
