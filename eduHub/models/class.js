@@ -41,9 +41,10 @@ const classSchema = new Schema(
     student: [{ type: Schema.Types.ObjectId, ref: 'User' }],
     posts: [classPosts]
   },
-  {
-    timestamps: true
-  }
-)
+  student: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+  posts: [classPosts],
+}, {
+  timestamps: true
+})
 
 module.exports = mongoose.model('Class', classSchema)
