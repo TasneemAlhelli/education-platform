@@ -1,27 +1,25 @@
-<%- include('../partials/header.ejs') %>
+<%- include('../partials/header') %>
+<%- include('../partials/navbar') %>
 
 <h2><%= title %></h2>
-<% if(classFilter == '/classes'){ %>
+<% if(classFilter == '/classes') { %>
   <% allClasses.forEach((classDetails) => { %>
     <ol>
       <li> <%= classDetails.name %></li>
       <li> <%= classDetails.description %></li>
       <a href="/classes/<%= classDetails._id %>">View</a>
     
-      <% if(userDetails.role == 'student' && !classDetails.student.includes(userDetails._id.toString())){ %>
+      <% if(user.role == 'student' && !classDetails.student.includes(user._id.toString())){ %>
         <form method="POST" action="/classes/<%= classDetails._id %>">
           <button type="submit">Enroll</button>
         </form>
       <% } %>
     </ol>
-    
-    <% }) %>
-<% } %>
-
-<% if(classFilter == '/classes/myclasses'){ %>
+  <% }) %>
+<% } else if (classFilter == '/classes/myclasses') { %>
   <% allClasses.forEach((classDetails) => { %>
     <ol>
-      <% if((userDetails.role == 'teacher' && classDetails.teacher.toString() == (userDetails._id.toString()))){ %>
+      <% if((user.role == 'teacher' && classDetails.teacher._id.toString() == (user._id.toString()))) { %>
 
         <a href="/classes/new">Create</a>
 
@@ -33,9 +31,7 @@
         <form action="/classes/<%= classDetails._id %>?_method=PUT" method="POST">
           <button type="submit">Edit</button>
         </form>
-
         <!--Edit button-->
-
 
         <!--Delete button-->
         <form action="./myclasses/<%= classDetails._id %>?_method=DELETE"  method="POST">
@@ -44,8 +40,7 @@
       <% } %>
         <!--Delete button-->
 
-
-      <% if(userDetails.role == 'student' && classDetails.student.includes(userDetails._id.toString())){ %>
+      <% if(user.role == 'student' && classDetails.student.includes(user._id.toString())) { %>
         <li> <%= classDetails.name %></li>
         <li> <%= classDetails.description %></li>
         <a href="/classes/<%= classDetails._id %>">View</a>
@@ -53,13 +48,4 @@
     </ol>
   <% }) %>
 <% } %>
-
-
-
-
-
-
-
-
-
 <%- include('../partials/footer.ejs') %>

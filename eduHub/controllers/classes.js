@@ -1,5 +1,28 @@
 const Class = require('../models/class')
 
+const index = async (req, res) => {
+  const classFilter = req._parsedOriginalUrl.pathname
+  console.log('request', req._parsedOriginalUrl.pathname)
+  let allClasses = await Class.find({}).populate('teacher')
+  let userDetails = req.user
+
+  if (classFilter == '/classes') {
+    res.render('classes/index', {
+      title: 'All Classes',
+      allClasses,
+      user: req.user,
+      classFilter
+    })
+  } else {
+    res.render('classes/index', {
+      title: 'My Classes',
+      allClasses,
+      user: req.user,
+      classFilter
+    })
+  }
+}
+
 const newClass = (req, res) => {
   if (req.user.role == 'teacher') {
     res.render('classes/new', { title: 'Create Class' })
@@ -15,29 +38,6 @@ const create = async (req, res) => {
     res.redirect('/classes')
   } catch (error) {
     console.log(error)
-  }
-}
-
-const index = async (req, res) => {
-  const classFilter = req._parsedOriginalUrl.pathname
-  console.log('request', req._parsedOriginalUrl.pathname)
-  let allClasses = await Class.find({})
-  let userDetails = req.user
-
-  if (classFilter == '/classes') {
-    res.render('classes/index', {
-      title: 'All Classes',
-      allClasses,
-      userDetails,
-      classFilter
-    })
-  } else {
-    res.render('classes/index', {
-      title: 'My Classes',
-      allClasses,
-      userDetails,
-      classFilter
-    })
   }
 }
 
