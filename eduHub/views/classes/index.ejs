@@ -1,51 +1,145 @@
 <%- include('../partials/header') %>
 <%- include('../partials/navbar') %>
 
-<h2><%= title %></h2>
+
 <% if(classFilter == '/classes') { %>
-  <% allClasses.forEach((classDetails) => { %>
-    <ol>
-      <li> <%= classDetails.name %></li>
-      <li> <%= classDetails.description %></li>
-      <a href="/classes/<%= classDetails._id %>">View</a>
-    
-      <% if(user.role == 'student' && !classDetails.student.includes(user._id.toString())){ %>
-        <form method="POST" action="/classes/<%= classDetails._id %>">
-          <button type="submit">Enroll</button>
-        </form>
-      <% } %>
-    </ol>
-  <% }) %>
-<% } else if (classFilter == '/classes/myclasses') { %>
-  <% allClasses.forEach((classDetails) => { %>
-    <ol>
-      <% if((user.role == 'teacher' && classDetails.teacher._id.toString() == (user._id.toString()))) { %>
+  <ul class="class-items">
+    <h2><%= title %></h2>
 
-        <a href="/classes/new">Create</a>
+      <% allClasses.forEach((classDetails) => { %>
+        <li class="item">
+          <div class="task">
 
-        <li> <%= classDetails.name %></li>
-        <li> <%= classDetails.description %></li>
-        <a href="/classes/<%= classDetails._id %>">View</a>
+            <div class="icon">
+              <img src="https://source.unsplash.com/40x40/?indian" alt="">
+            </div>
+
+            <div class="task-content">
+              <div class="name">
+                <%= classDetails.name %>
+              </div>
+					    <div clase="description" style="width:150px">
+                <%= classDetails.description %>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="viewBtn">
+            <% if(user && user.role == 'student' && !classDetails.student.includes(user._id.toString())){ %>
+              <form method="POST" action="/classes/<%= classDetails._id %>">
+                <button class="view" type="submit">Enroll</button>
+              </form>
+            <% } %>
+
+            <form method="GET" action="/classes/<%= classDetails._id %>">
+              <button class="view" type="submit" style="background-color: green;">View</button>
+            </form>
+
+          </div>
+        </li>
+      <% }) %>
+  </ul>
+
+
+
+  <% }else if (classFilter == '/classes/myclasses') { %>
+
+    <ul class="class-items">
+
+      <div class="myClass-header">
+        <h2><%= title %></h2>
+        <% if(user.role == 'teacher'){ %>
+          <a class="createLink" href="/classes/new">Create</a>
+        <% } %>
+      </div>
+
+
+
+      <% allClasses.forEach((classDetails) => { %>
         
-        <!--Edit button-->
-        <form action="/classes/<%= classDetails._id %>" method="GET">
-          <button type="submit">Edit</button>
-        </form>
-        <!--Edit button-->
+          <% if((user.role == 'teacher' && classDetails.teacher._id.toString() == (user._id.toString()))) { %>
+            <li class="item">
 
-        <!--Delete button-->
-        <form action="./myclasses/<%= classDetails._id %>?_method=DELETE"  method="POST">
-          <button type="submit">Delete</button>
-        </form>
-      <% } %>
-        <!--Delete button-->
+            <div class="task">
+              <div class="icon">
+                <img src="https://source.unsplash.com/40x40/?indian" alt="">
+              </div>
+  
+              <div class="task-content">
+                <div class="name">
+                  <%= classDetails.name %>
+                </div>
+                <div clase="description" style="width:150px">
+                  <%= classDetails.description %>
+                </div>
+              </div>
+            </div>
+  
+            <div class="viewBtn">
+  
+              <!--Edit button-->
+              <form action="/classes/<%= classDetails._id %>?_method=PUT" method="POST">
+                <button class="view" type="submit">Edit</button>
+              </form>
+              <!--Edit button-->
+  
+              <!--Delete button-->
+              <form action="./myclasses/<%= classDetails._id %>?_method=DELETE"  method="POST">
+                <button class="view" type="submit" style="background-color: red;">Delete</button>
+              </form>
+              <!--Delete button-->
+  
+              <!--View button-->
+              <form method="GET" action="/classes/<%= classDetails._id %>">
+                <button class="view" type="submit" style="background-color: green;">View</button>
+              </form>
+              <!--View button-->
+  
+            </div>
+            </li>
+  
+          <% } %>
+  
+          <% if(user.role == 'student' && classDetails.student.includes(user._id.toString())) { %>
+            <li class="item">
+  
+            <div class="task">
+              <div class="icon">
+                <img src="https://source.unsplash.com/40x40/?indian" alt="">
+              </div>
+    
+              <div class="task-content">
+                <div class="name">
+                  <%= classDetails.name %>
+                </div>
+                <div clase="description" style="width:150px">
+                  <%= classDetails.description %>
+                </div>
+              </div>
+            </div>
+  
+            <div class="viewBtn">
+              <!--View button-->
+          <form method="GET" action="/classes/<%= classDetails._id %>">
+            <button class="view" type="submit" style="background-color: green;">View</button>
+          </form>
+          <!--View button-->
+            </div>
+          </li>
+  
+          <% } %>
+  
+        </li>
+        
 
-      <% if(user.role == 'student' && classDetails.student.includes(user._id.toString())) { %>
-        <li> <%= classDetails.name %></li>
-        <li> <%= classDetails.description %></li>
-        <a href="/classes/<%= classDetails._id %>">View</a>
-      <% } %>
-    </ol>
-  <% }) %>
-<% } %>
+      <% }) %>
+  
+  </ul>
+  
+  <% } %>
+
+
+
+
 <%- include('../partials/footer.ejs') %>
