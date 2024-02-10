@@ -23,6 +23,18 @@ const index = async (req, res) => {
   }
 }
 
+const show = async (req, res) => {
+  try {
+    const classInfo = await Class.findById(req.params.id).populate('teacher')
+    res.render('classes/show', {
+      title: `Class - ${classInfo.name}`,
+      classInfo
+    })
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 const newClass = (req, res) => {
   if (req.user.role == 'teacher') {
     res.render('classes/new', { title: 'Create Class' })
@@ -61,10 +73,6 @@ const update = async (req, res) => {
     console.log(err)
     res.redirect('/classes/myclasses')
   }
-}
-
-const show = async (req, res) => {
-  res.render('classes/show', { title: 'show page' })
 }
 
 const enroll = async (req, res) => {

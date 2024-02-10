@@ -1,4 +1,12 @@
 <%- include('../partials/header.ejs') %>
-
-<h2>Show class</h2>
+<%- include('../partials/navbar.ejs') %>
+<main id="show-class">
+  <section class="class-info">    
+    <h1><%= classInfo.name %></h2>
+    <h3><%= classInfo.teacher.name %></h3>
+    <p><%= classInfo.description %></p>
+    <p><%= classInfo.startDate %> - <%= classInfo.endDate %></p>
+    <p><%= classInfo.grade %></p>
+  </section>
+</main>
 <%- include('../partials/footer.ejs') %>
