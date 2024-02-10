@@ -12,23 +12,33 @@ const create = async (req, res) => {
   req.body.teacher = req.user._id
   try {
     await Class.create(req.body)
-    res.redirect('/classes/new')
+    res.redirect('/classes')
   } catch (error) {
     console.log(error)
   }
 }
 
 const index = async (req, res) => {
-  const allClasses = await Class.find({})
-  console.log(allClasses)
+  const classFilter = req._parsedOriginalUrl.pathname
+  console.log('request', req._parsedOriginalUrl.pathname)
+  let allClasses = await Class.find({})
+  let userDetails = req.user
 
-  const userDetails = req.user
-
-  res.render('classes/index', {
-    title: 'All Classes',
-    allClasses,
-    userDetails
-  })
+  if (classFilter == '/classes') {
+    res.render('classes/index', {
+      title: 'All Classes',
+      allClasses,
+      userDetails,
+      classFilter
+    })
+  } else {
+    res.render('classes/index', {
+      title: 'My Classes',
+      allClasses,
+      userDetails,
+      classFilter
+    })
+  }
 }
 
 const show = async (req, res) => {
@@ -47,10 +57,18 @@ const enroll = async (req, res) => {
   }
 }
 
+const deleteClass = async (req, res) => {
+  const oneClass = await Class.findOne({ _id: req.params.id })
+  await oneClass.deleteOne()
+
+  res.redirect('/classes/myclasses')
+}
+
 module.exports = {
   new: newClass,
   create,
   index,
   show,
-  enroll
+  enroll,
+  delete: deleteClass
 }
