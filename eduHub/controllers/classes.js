@@ -59,7 +59,8 @@ const enroll = async (req, res) => {
 
 const deleteClass = async (req, res) => {
   const oneClass = await Class.findOne({ _id: req.params.id })
-  delete oneClass
+  await oneClass.deleteOne()
+
   res.redirect('/classes/myclasses')
 }
 

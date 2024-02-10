@@ -33,16 +33,17 @@
         <form action="/classes/<%= classDetails._id %>?_method=PUT" method="POST">
           <button type="submit">Edit</button>
         </form>
+
         <!--Edit button-->
 
 
         <!--Delete button-->
-        <form action="/classes/<%= classDetails._id %>?_method=DELETE"  method="POST">
+        <form action="./myclasses/<%= classDetails._id %>?_method=DELETE"  method="POST">
           <button type="submit">Delete</button>
         </form>
       <% } %>
         <!--Delete button-->
-        
+
 
       <% if(userDetails.role == 'student' && classDetails.student.includes(userDetails._id.toString())){ %>
         <li> <%= classDetails.name %></li>
