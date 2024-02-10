@@ -1,21 +1,64 @@
 <%- include('../partials/header.ejs') %>
 
-<h2>All Classes</h2>
+<h2><%= title %></h2>
+<% if(classFilter == '/classes'){ %>
+  <% allClasses.forEach((classDetails) => { %>
+    <ol>
+      <li> <%= classDetails.name %></li>
+      <li> <%= classDetails.description %></li>
+      <a href="/classes/<%= classDetails._id %>">View</a>
+    
+      <% if(userDetails.role == 'student' && !classDetails.student.includes(userDetails._id.toString())){ %>
+        <form method="POST" action="/classes/<%= classDetails._id %>">
+          <button type="submit">Enroll</button>
+        </form>
+      <% } %>
+    </ol>
+    
+    <% }) %>
+<% } %>
 
-<% allClasses.forEach((classDetails) => { %>
-<ol>
-  <li> <%= classDetails.name %></li>
-  <li> <%= classDetails.description %></li>
-  <a href="/classes/<%= classDetails._id %>">View</a>
+<% if(classFilter == '/classes/myclasses'){ %>
+  <% allClasses.forEach((classDetails) => { %>
+    <ol>
+      <% if((userDetails.role == 'teacher' && classDetails.teacher.toString() == (userDetails._id.toString()))){ %>
 
-  <% if(userDetails.role == 'student' && !classDetails.student.includes(userDetails._id.toString())){ %>
-    <form method="POST" action="/classes/<%= classDetails._id %>">
-      <button type="submit">Enroll</button>
-    </form>
-  <% } %>
-</ol>
+        <a href="/classes/new">Create</a>
+
+        <li> <%= classDetails.name %></li>
+        <li> <%= classDetails.description %></li>
+        <a href="/classes/<%= classDetails._id %>">View</a>
+        
+        <!--Edit button-->
+        <form action="/classes/<%= classDetails._id %>?_method=PUT" method="POST">
+          <button type="submit">Edit</button>
+        </form>
+        <!--Edit button-->
 
 
-<% }) %>
+        <!--Delete button-->
+        <form action="/classes/<%= classDetails._id %>?_method=DELETE"  method="POST">
+          <button type="submit">Delete</button>
+        </form>
+      <% } %>
+        <!--Delete button-->
+        
+
+      <% if(userDetails.role == 'student' && classDetails.student.includes(userDetails._id.toString())){ %>
+        <li> <%= classDetails.name %></li>
+        <li> <%= classDetails.description %></li>
+        <a href="/classes/<%= classDetails._id %>">View</a>
+      <% } %>
+    </ol>
+  <% }) %>
+<% } %>
+
+
+
+
+
+
+
+
 
 <%- include('../partials/footer.ejs') %>
