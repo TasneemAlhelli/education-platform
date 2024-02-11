@@ -1,19 +1,19 @@
 <%- include('../partials/header.ejs') %>
 <%- include('../partials/navbar.ejs') %>
   <h2>Edit Class</h2>
-  <form action="/classes/<%= classInfo._id %>?_method=PUT" method="POST">
-    <input class="newInputs" type="text" name="name" value="<%= classInfo.name %>" placeholder="Class Name" required>
+  <form action="/classes/<%= classItem._id %>?_method=PUT" method="POST">
+    <input class="newInputs" type="text" name="name" value="<%= classItem.name %>" placeholder="Class Name" required>
     <br>
 
     <textarea
-    class="newInputs" type="text" name="description" placeholder="Class description"><%= classInfo.description %></textarea>
+    class="newInputs" type="text" name="description" placeholder="Class description"><%= classItem.description %></textarea>
     <br>
 
     <label for="startDate">Start Date</label>
     <%
-      let startDate = new Date(classInfo.startDate)
+      let startDate = new Date(classItem.startDate)
       startDate = startDate.toISOString().split('T')[0];
-      let endDate = new Date(classInfo.endDate)
+      let endDate = new Date(classItem.endDate)
       endDate = endDate.toISOString().split('T')[0];
     %>
     <input type="date" name="startDate" value="<%= startDate %>">
@@ -25,7 +25,7 @@
     <% const grades = ['Primary', 'Intermediate', 'Secondary'] %>
     <select class="newInputs" name="grade">
       <% grades.forEach((grade) => { 
-        if (grade === classInfo.grade) { %>
+        if (grade === classItem.grade) { %>
           <option value="<%= grade %>" selected><%= grade %></option>
         <% } else { %>
           <option value="<%= grade %>"><%= grade %></option>
