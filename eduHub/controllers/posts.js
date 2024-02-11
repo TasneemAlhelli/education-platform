@@ -1,5 +1,4 @@
 const Class = require("../models/class");
-const { post } = require("../routes/posts");
 
 // show the form to create a new post
 const newPostForm = (req, res) => {
