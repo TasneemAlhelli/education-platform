@@ -25,6 +25,7 @@ const index = async (req, res) => {
 }
 
 const show = async (req, res) => {
+  const user = req.user;
   try {
     const classItem = await Class.findById(req.params.id).populate('teacher')
     res.render('classes/show', {
