@@ -6,7 +6,7 @@
 
 <div id="form">
 
-  <form id="classForm" action="/classes/<%= classItem._id %>?_method=PUT" method="POST">
+  <form id="classForm" action="/classes/<%= classItem._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
 
     <div class="formgroup">
       <label for="name">Class name</label>
@@ -50,6 +50,15 @@
           <% }
         }) %>
         </select>
+    </div>
+    <br>
+
+    <div class="formgroup">
+      <label for="image">Image</label>
+      <div class="prevImg">
+        <input type="file" name="image" required id="imgInput" value="<%= classItem.image %>">
+        <img src="/images/<%= classItem.image %>" alt="" id="imgImage">
+      </div>
     </div>
     <br>
 
