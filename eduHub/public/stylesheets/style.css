@@ -283,8 +283,9 @@ textarea:hover {
   border: solid 3px #3498db;
 }
 
-#submit {
-  background-color: #3498db;
+#submit,
+.editLink {
+  background-color: green;
   color: #ffffff;
   height: 50px;
   cursor: pointer;
@@ -296,7 +297,14 @@ textarea:hover {
   padding: 8px 16px;
   border: black 2px solid;
 }
-#submit:hover {
+
+.editLink {
+  text-decoration: none;
+  padding: 13px 16px;
+  background-color: #3498db;
+}
+
+.editLink:hover {
   background-color: #1d70a8;
 }
 

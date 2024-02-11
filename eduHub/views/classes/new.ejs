@@ -10,32 +10,32 @@
 
     <div class="formgroup" id="name-form">
       <label for="name">Class Name</label>
-      <input class="newInputs" type="text" name="name" placeholder="Class Name">
+      <input class="newInputs" type="text" name="name" placeholder="Class Name" required>
     </div>
     <br>
 
     <div class="formgroup" id="description-form">
       <label for="description">Description</label>
-      <textarea name="description" placeholder="Class Description" cols="160" rows="5"></textarea>
+      <textarea name="description" placeholder="Class Description" cols="160" rows="5" required></textarea>
   </div>
     <br>
 
     <div class="formgroup date">
       <div class="startDate">
         <label for="startDate">Start Date</label>
-        <input type="date" name="startDate">
+        <input type="date" name="startDate" required>
       </div>
 
       <div class="endDate">
         <label for="endDate">End Date</label>
-        <input type="date" name="endDate">
+        <input type="date" name="endDate" required>
       </div>
     </div>
   
     <br>
     <div class="formgroup">
       <label for="grade">grade</label>
-      <select class="newInputs" name="grade">
+      <select class="newInputs" name="grade" required>
         <option value="Primary">Primary</option>
         <option value="Intermediate">Intermediate</option>
         <option value="Secondary">Secondary</option>
