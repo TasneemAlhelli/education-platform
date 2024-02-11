@@ -1,15 +1,15 @@
 <nav>
-    <div class="navigationBtn">
-      <a href="/classes" class="btn">All Classes</a> |
-      <!-- <a href="#" class="btn">About</a> | -->
-      <!-- <a href="#" class="btn">Contact</a> | -->
-      <!-- <a href="#" class="btn">News</a> | -->
-      <!-- <a href="#" class="btn">Team</a> | -->
-      <% if (user) { %>
-        <a href="/classes/myclasses">My classes</a> |
-        <a class="loginBtn" href="/logout">LOG OUT</a>
+  <div class="navigationBtn">
+    <a href="/" class="btn">Home</a> |
+    <a href="/classes" class="btn">All Classes</a> |
+    <!-- <a href="#" class="btn">Contact</a> | -->
+    <!-- <a href="#" class="btn">News</a> | -->
+    <!-- <a href="#" class="btn">Team</a> | -->
+    <% if (user) { %>
+      <a href="/classes/myclasses">My classes</a> |
+      <a class="loginBtn" href="/logout">LOG OUT</a>
       <% } else { %>
         <a class="loginBtn btn" href="/auth/google">LOG IN</a>
-      <% } %>
-    </div>
+        <% } %>
+  </div>
 </nav>

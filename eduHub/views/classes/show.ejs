@@ -65,6 +65,13 @@
             <p>
               <%= value.message %>
             </p>
+            <p>
+            <form action="/classes/<%= classItem._id %>/<%= value._id %>/remove?_method=DELETE" method="POST">
+              <button class="view">Remove</button>
+            </form>
+            </p>
+            <% });%>
+              <% } %>
           <% });%>
         <% } %>
       </div>
