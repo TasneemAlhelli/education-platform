@@ -37,7 +37,7 @@
     <ul class="class-items">
       <div class="myClass-header">
         <h2><%= title %></h2>
-        <% if(user.role == 'teacher'){ %>
+        <% if(user && user.role == 'teacher'){ %>
           <a class="createLink" href="/classes/new">Create</a>
         <% } %>
       </div>
