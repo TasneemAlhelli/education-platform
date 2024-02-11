@@ -50,9 +50,11 @@
     <section class="postSection">
       <div class="postsList">
         <h2>Posts</h2>
-        <p>
-          <a href="/classes/<%= classItem._id %>/newPost">New Post</a>
-        </p>
+        <% if(user && user.role==="teacher" ) { %>
+          <p>
+            <a href="/classes/<%= classItem._id %>/newPost">New Post</a>
+          </p>
+        <% } %>
         <% if(classItem.posts) { %>
           <% classItem.posts.forEach(value=> { %>
             <h4>

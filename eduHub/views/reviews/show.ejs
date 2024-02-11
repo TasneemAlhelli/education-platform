@@ -1,0 +1,11 @@
+<%- include('../partials/header') %>
+  <h2>Reviews</h2>
+  <% reviewList.forEach((value)=> { %>
+    <p>
+      <%= value.message %>
+    </p>
+    <p>
+      <%= value.rating %>
+    </p>
+    <% }); %>
+      <%- include('../partials/footer') %>
