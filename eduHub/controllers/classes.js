@@ -47,6 +47,11 @@ const newClass = (req, res) => {
 
 const create = async (req, res) => {
   req.body.teacher = req.user._id
+  const { image } = req.files
+  req.body.image = image.name
+  image.mv('public/images/' + image.name)
+  console.log(req.body)
+  console.log(req.files)
   try {
     await Class.create(req.body)
     res.redirect('/classes/myclasses')
