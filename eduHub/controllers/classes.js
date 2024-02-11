@@ -25,7 +25,7 @@ const index = async (req, res) => {
 }
 
 const show = async (req, res) => {
-  const user = req.user;
+  const user = req.user
   try {
     const classItem = await Class.findById(req.params.id).populate('teacher')
     res.render('classes/show', {
@@ -73,6 +73,9 @@ const editClass = async (req, res) => {
 const update = async (req, res) => {
   try {
     const classItem = await Class.findById(req.params.id)
+    const { image } = req.files
+    req.body.image = image.name
+    image.mv('public/images/' + image.name)
 
     await classItem.updateOne(req.body)
     res.redirect('/classes/myclasses')
