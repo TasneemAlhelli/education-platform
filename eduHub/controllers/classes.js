@@ -2,7 +2,6 @@ const Class = require('../models/class')
 
 const index = async (req, res) => {
   const classFilter = req._parsedOriginalUrl.pathname
-  console.log('request', req._parsedOriginalUrl.pathname)
   let allClasses = await Class.find({}).populate('teacher')
 
   if (classFilter == '/classes') {
@@ -27,10 +26,27 @@ const index = async (req, res) => {
 const show = async (req, res) => {
   const user = req.user;
   try {
-    const classItem = await Class.findById(req.params.id).populate('teacher')
+    const classItem = await Class.findById(req.params.id).populate([
+      'teacher',
+      'student'
+    ])
+
+    // check if enrolled student
+    let enrolled = false
+    if (req.user && req.user.role === 'student') {
+      let counter = 0
+      while (!enrolled) {
+        if (classItem.student[counter].id == req.user._id) {
+          enrolled = true
+        }
+        counter++
+      }
+    }
+    
     res.render('classes/show', {
       title: `Class - ${classItem.name}`,
-      classItem
+      classItem,
+      enrolled
     })
   } catch (err) {
     console.log(err)

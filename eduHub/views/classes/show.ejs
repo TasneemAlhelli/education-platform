@@ -1,35 +1,60 @@
 <%- include('../partials/header.ejs') %>
-  <%- include('../partials/navbar.ejs') %>
-    <main id="show-class">
-      <section class="class-info">
-        <h1>
+<%- include('../partials/navbar.ejs') %>
+  <main id="showClass">
+    <section class="classSection">
+      <section class="classInfo">
+        <h2>
           <%= classItem.name %>
-            </h2>
-            <h3>
-              <%= classItem.teacher.name %>
-            </h3>
-            <p>
-              <%= classItem.description %>
-            </p>
-            <p>
-              <%= classItem.startDate %> - <%= classItem.endDate %>
-            </p>
-            <p>
-              <%= classItem.grade %>
-            </p>
-            <% if(user && user.role==="student" ) { %>
-              <p>
-                <a href="/classes/<%= classItem._id %>/reviews">Review</a>
-              </p>
-              <% } %>
-                <% if(user && user.role==="teacher" ) { %>
-                  <p>
-                    <a href="/classes/<%= classItem._id %>/newPost">New Post</a>
-                  </p>
-                  <% } %>
+        </h2>
+        <h3>
+          <%= classItem.teacher.name %>
+        </h3>
+        <p>
+          <%= classItem.description %>
+        </p>
+        <p class="date">
+          <%           
+          let startDate = new Date(classItem.startDate)
+          startDate = startDate.toISOString().split('T')[0];
+  
+          let endDate = new Date(classItem.endDate)
+          endDate = endDate.toISOString().split('T')[0];
+          %>
+          <b>From: </b><%= startDate %> <b>To: </b><%= endDate %>
+        </p>
+        <p>
+          <b>Grade: </b><%= classItem.grade %>
+        </p>
       </section>
+      <hr>
+      <section class="reviewbuttons">
+        <button>View All Reviews</button>
+        <% if (enrolled) { %>
+          <button>Leave Review</button>
+        <% } %>
+      </section>
+      <% if (user && (classItem.teacher._id.equals(user._id) || enrolled)) { %>
+        <hr>
+        <div class="students">
+          <h3>Registered Students</h3>
+          <% if (classItem.student.length == 0) { %>
+            <p>No Registered Student</p>
+          <% } else { %>
+            <% classItem.student.forEach((student) => { %>
+              <img src="<%= student.avatar %>">
+            <% }) %>  
+          <% } %>
+        </div>
+      <% } %>
+    </section>
+    <section class="postSection">
       <div class="postsList">
         <h2>Posts</h2>
+        <% if(user && user.role==="teacher" ) { %>
+          <p>
+            <a href="/classes/<%= classItem._id %>/newPost">New Post</a>
+          </p>
+        <% } %>
         <% if(classItem.posts) { %>
           <% classItem.posts.forEach(value=> { %>
             <h4>
@@ -38,8 +63,9 @@
             <p>
               <%= value.message %>
             </p>
-            <% });%>
-              <% } %>
+          <% });%>
+        <% } %>
       </div>
-    </main>
-    <%- include('../partials/footer.ejs') %>
+    </section>
+  </main>
+<%- include('../partials/footer.ejs') %>
