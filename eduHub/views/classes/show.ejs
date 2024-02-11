@@ -17,16 +17,16 @@
             <p>
               <%= classItem.grade %>
             </p>
-            <% if(user.role==="student" ) { %>
-          <p>
-            <a href="/classes/<%= classItem._id %>/reviews">Review</a>
-          </p>
-          <% } %>
-            <% if(user.role==="teacher" ) { %>
+            <% if(user && user.role==="student" ) { %>
               <p>
-                <a href="/classes/<%= classItem._id %>/newPost">New Post</a>
+                <a href="/classes/<%= classItem._id %>/reviews">Review</a>
               </p>
               <% } %>
+                <% if(user && user.role==="teacher" ) { %>
+                  <p>
+                    <a href="/classes/<%= classItem._id %>/newPost">New Post</a>
+                  </p>
+                  <% } %>
       </section>
       <div class="postsList">
         <h2>Posts</h2>
