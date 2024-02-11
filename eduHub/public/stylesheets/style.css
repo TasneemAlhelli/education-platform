@@ -329,3 +329,19 @@ textarea:hover {
 .endDate {
   margin-right: 0;
 }
+
+#imgInput {
+  background: white;
+  height: 70px;
+}
+
+.prevImg {
+  position: relative;
+  display: flex;
+}
+
+#imgImage {
+  position: absolute;
+  right: 30px;
+  top: 6px;
+}
