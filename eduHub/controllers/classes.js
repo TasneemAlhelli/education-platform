@@ -76,18 +76,6 @@ const update = async (req, res) => {
   }
 }
 
-const enroll = async (req, res) => {
-  try {
-    const classItem = await Class.findById(req.params.id)
-    classItem.student.push(req.user._id)
-    await classItem.save()
-
-    res.render('classes/show', { title: 'show page' })
-  } catch (error) {
-    console.log(error)
-  }
-}
-
 const deleteClass = async (req, res) => {
   const oneClass = await Class.findOne({ _id: req.params.id })
   await oneClass.deleteOne()
@@ -100,7 +88,6 @@ module.exports = {
   create,
   index,
   show,
-  enroll,
   edit: editClass,
   update,
   delete: deleteClass
