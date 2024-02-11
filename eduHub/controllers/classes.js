@@ -26,10 +26,10 @@ const index = async (req, res) => {
 
 const show = async (req, res) => {
   try {
-    const classInfo = await Class.findById(req.params.id).populate('teacher')
+    const classItem = await Class.findById(req.params.id).populate('teacher')
     res.render('classes/show', {
-      title: `Class - ${classInfo.name}`,
-      classInfo
+      title: `Class - ${classItem.name}`,
+      classItem
     })
   } catch (err) {
     console.log(err)
@@ -56,8 +56,8 @@ const create = async (req, res) => {
 
 const editClass = async (req, res) => {
   try {
-    const classInfo = await Class.findById(req.params.id)
-    res.render('classes/edit', { title: 'Update Class', classInfo })
+    const classItem = await Class.findById(req.params.id)
+    res.render('classes/edit', { title: 'Update Class', classItem })
   } catch (err) {
     console.log(err)
     res.redirect(`/classes/myclasses`)
@@ -66,9 +66,9 @@ const editClass = async (req, res) => {
 
 const update = async (req, res) => {
   try {
-    const classInfo = await Class.findById(req.params.id)
+    const classItem = await Class.findById(req.params.id)
 
-    await classInfo.updateOne(req.body)
+    await classItem.updateOne(req.body)
     res.redirect('/classes/myclasses')
   } catch (err) {
     console.log(err)

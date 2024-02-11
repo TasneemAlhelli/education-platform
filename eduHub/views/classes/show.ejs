@@ -3,28 +3,28 @@
     <main id="show-class">
       <section class="class-info">
         <h1>
-          <%= classInfo.name %>
+          <%= classItem.name %>
             </h2>
             <h3>
-              <%= classInfo.teacher.name %>
+              <%= classItem.teacher.name %>
             </h3>
             <p>
-              <%= classInfo.description %>
+              <%= classItem.description %>
             </p>
             <p>
-              <%= classInfo.startDate %> - <%= classInfo.endDate %>
+              <%= classItem.startDate %> - <%= classItem.endDate %>
             </p>
             <p>
-              <%= classInfo.grade %>
+              <%= classItem.grade %>
             </p>
             <p>
-              <a href="/classes/<%= classInfo._id %>/newPost">New Post</a>
+              <a href="/classes/<%= classItem._id %>/newPost">New Post</a>
             </p>
       </section>
       <div class="postsList">
         <h2>Posts</h2>
-        <% if(classInfo.posts) { %>
-          <% classInfo.posts.forEach(value=> { %>
+        <% if(classItem.posts) { %>
+          <% classItem.posts.forEach(value=> { %>
             <h4>
               <%= value.heading %>
             </h4>
