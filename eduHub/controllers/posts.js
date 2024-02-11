@@ -1,4 +1,5 @@
 const Class = require("../models/class");
+const { post } = require("../routes/posts");
 
 // show the form to create a new post
 const newPostForm = (req, res) => {
@@ -18,7 +19,20 @@ const addPostToClass = async (req, res) => {
   res.redirect("/classes/" + classId);
 }
 
+const postsRemove = async (req, res) => {
+  const classFound = await Class.findById(req.params.classId);
+  const postId = req.params.postId;
+  classFound.posts.forEach((value, index) => {   
+    if(value._id.equals(postId)) {
+      classFound.posts.splice(index, 1);
+    }
+  });
+  await classFound.save();
+  res.redirect("/classes/" + req.params.classId);
+}
+
 module.exports = {
   new: newPostForm,
-  create: addPostToClass
+  create: addPostToClass,
+  delete: postsRemove
 }
