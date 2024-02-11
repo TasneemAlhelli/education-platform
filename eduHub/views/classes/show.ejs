@@ -1,12 +1,38 @@
 <%- include('../partials/header.ejs') %>
-<%- include('../partials/navbar.ejs') %>
-<main id="show-class">
-  <section class="class-info">    
-    <h1><%= classInfo.name %></h2>
-    <h3><%= classInfo.teacher.name %></h3>
-    <p><%= classInfo.description %></p>
-    <p><%= classInfo.startDate %> - <%= classInfo.endDate %></p>
-    <p><%= classInfo.grade %></p>
-  </section>
-</main>
-<%- include('../partials/footer.ejs') %>
+  <%- include('../partials/navbar.ejs') %>
+    <main id="show-class">
+      <section class="class-info">
+        <h1>
+          <%= classInfo.name %>
+            </h2>
+            <h3>
+              <%= classInfo.teacher.name %>
+            </h3>
+            <p>
+              <%= classInfo.description %>
+            </p>
+            <p>
+              <%= classInfo.startDate %> - <%= classInfo.endDate %>
+            </p>
+            <p>
+              <%= classInfo.grade %>
+            </p>
+            <p>
+              <a href="/classes/<%= classInfo._id %>/newPost">New Post</a>
+            </p>
+      </section>
+      <div class="postsList">
+        <h2>Posts</h2>
+        <% if(classInfo.posts) { %>
+          <% classInfo.posts.forEach(value=> { %>
+            <h4>
+              <%= value.heading %>
+            </h4>
+            <p>
+              <%= value.message %>
+            </p>
+            <% });%>
+              <% } %>
+      </div>
+    </main>
+    <%- include('../partials/footer.ejs') %>
