@@ -371,3 +371,18 @@ header {
   right: 30px;
   top: 6px;
 }
+
+#reviewForm {
+  display: grid;
+  width: 80%;
+  margin: 0 auto;
+}
+
+#reviewForm header h1 {
+  text-align: center;
+}
+
+#rating {
+  display: flex;
+  width: 30%;
+}
