@@ -22,7 +22,7 @@
 
           <div class="viewBtn">
             <% if(user && user.role == 'student' && !classDetails.student.includes(user._id.toString())){ %>
-              <form method="POST" action="/classes/<%= classDetails._id %>">
+              <form method="POST" action="/users/<%= classDetails._id %>/enroll">
                 <button class="view" type="submit">Enroll</button>
               </form>
             <% } %>
