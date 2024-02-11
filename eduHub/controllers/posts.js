@@ -15,7 +15,7 @@ const addPostToClass = async (req, res) => {
   const subject = await Class.findById(classId);
   subject.posts.push({heading: heading, message: message});
   await subject.save();
-  res.redirect("/");
+  res.redirect("/classes/" + classId);
 }
 
 module.exports = {
