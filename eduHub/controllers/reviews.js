@@ -25,8 +25,14 @@ const saveReview = (req, res) => {
   res.redirect("/classes/" + classId + "/all");
 }
 
-const allReviews = (req, res) => {
+const allReviews = async (req, res) => {
+  const classId = req.params.classId;
+  const reviewList = await Review.find({class: classId});
   
+  res.render("reviews/show", {
+    title: "All reviews",
+    reviewList
+  });
 }
 
 module.exports = {
