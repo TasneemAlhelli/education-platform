@@ -28,9 +28,13 @@
       </section>
       <hr>
       <section class="reviewbuttons">
-        <button>View All Reviews</button>
+        <form action="/classes/<%= classItem._id %>/all">
+          <button type="submit">View All Reviews</button>
+        </form>
         <% if (enrolled) { %>
-          <button>Leave Review</button>
+          <form action="/classes/<%= classItem._id %>/reviews">
+              <button>Leave Review</button>
+          </form>
         <% } %>
       </section>
       <% if (user && (classItem.teacher._id.equals(user._id) || enrolled)) { %>
@@ -50,11 +54,9 @@
     <section class="postSection">
       <div class="postsList">
         <h2>Posts</h2>
-        <% if(user && user.role==="teacher" ) { %>
-          <p>
-            <a href="/classes/<%= classItem._id %>/newPost">New Post</a>
-          </p>
-        <% } %>
+        <p>
+          <a href="/classes/<%= classItem._id %>/newPost">New Post</a>
+        </p>
         <% if(classItem.posts) { %>
           <% classItem.posts.forEach(value=> { %>
             <h4>
