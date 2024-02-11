@@ -24,11 +24,13 @@ const index = async (req, res) => {
 }
 
 const show = async (req, res) => {
+  const user = req.user;
   try {
     const classInfo = await Class.findById(req.params.id).populate('teacher')
     res.render('classes/show', {
       title: `Class - ${classInfo.name}`,
-      classInfo
+      classInfo,
+      user
     })
   } catch (err) {
     console.log(err)
