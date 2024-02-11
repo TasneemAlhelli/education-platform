@@ -12,6 +12,7 @@ const createClass = async () => {
     startDate: new Date("2024-05-01"),
     endDate: new Date("2024-08-01"),
     grade: "Secondary",
+    teacher: ""
   });
 }
 
