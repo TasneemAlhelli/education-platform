@@ -6,7 +6,7 @@
 </header>
 
 <div id="form">
-  <form id="classForm" action="/classes" method="POST">
+  <form id="classForm" action="/classes" method="POST" enctype="multipart/form-data">
 
     <div class="formgroup" id="name-form">
       <label for="name">Class Name</label>
@@ -42,6 +42,12 @@
       </select>
     </div>
     <br>
+
+    <div class="formgroup">
+      <label for="image">
+        <input type="file" name="image" id="" required>
+      </label>
+    </div>
   
   
     <div class="viewBtn">
