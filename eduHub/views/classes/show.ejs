@@ -3,35 +3,35 @@
     <main id="show-class">
       <section class="class-info">
         <h1>
-          <%= classInfo.name %>
-        </h1>
-        <h3>
-          <%= classInfo.teacher.name %>
-        </h3>
-        <p>
-          <%= classInfo.description %>
-        </p>
-        <p>
-          <%= classInfo.startDate %> - <%= classInfo.endDate %>
-        </p>
-        <p>
-          <%= classInfo.grade %>
-        </p>
-        <% if(user.role==="student" ) { %>
+          <%= classItem.name %>
+            </h2>
+            <h3>
+              <%= classItem.teacher.name %>
+            </h3>
+            <p>
+              <%= classItem.description %>
+            </p>
+            <p>
+              <%= classItem.startDate %> - <%= classItem.endDate %>
+            </p>
+            <p>
+              <%= classItem.grade %>
+            </p>
+            <% if(user.role==="student" ) { %>
           <p>
-            <a href="/classes/<%= classInfo._id %>/reviews">Review</a>
+            <a href="/classes/<%= classItem._id %>/reviews">Review</a>
           </p>
           <% } %>
             <% if(user.role==="teacher" ) { %>
               <p>
-                <a href="/classes/<%= classInfo._id %>/newPost">New Post</a>
+                <a href="/classes/<%= classItem._id %>/newPost">New Post</a>
               </p>
               <% } %>
       </section>
       <div class="postsList">
         <h2>Posts</h2>
-        <% if(classInfo.posts) { %>
-          <% classInfo.posts.forEach(value=> { %>
+        <% if(classItem.posts) { %>
+          <% classItem.posts.forEach(value=> { %>
             <h4>
               <%= value.heading %>
             </h4>

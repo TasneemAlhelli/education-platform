@@ -22,7 +22,7 @@
 
           <div class="viewBtn">
             <% if(user && user.role == 'student' && !classDetails.student.includes(user._id.toString())){ %>
-              <form method="POST" action="/classes/<%= classDetails._id %>">
+              <form method="POST" action="/users/<%= classDetails._id %>/enroll">
                 <button class="view" type="submit">Enroll</button>
               </form>
             <% } %>
@@ -37,12 +37,13 @@
     <ul class="class-items">
       <div class="myClass-header">
         <h2><%= title %></h2>
-        <% if(user.role == 'teacher'){ %>
+        <% if(user && user.role == 'teacher'){ %>
           <a class="createLink" href="/classes/new">Create</a>
         <% } %>
       </div>
 
       <% allClasses.forEach((classDetails) => { %>
+        <% if((user.role == 'teacher' && classDetails.teacher._id.toString() == (user._id.toString()))) { %>
         <li class="item">
           <div class="task">
             <div class="icon">
@@ -58,7 +59,6 @@
             </div>
           </div>
 
-          <% if((user.role == 'teacher' && classDetails.teacher._id.toString() == (user._id.toString()))) { %>
             <div class="viewBtn">
               <form action="/classes/<%= classDetails._id %>/edit" method="GET">
                 <button class="view" type="submit">Edit</button>
@@ -66,13 +66,35 @@
               <form action="./myclasses/<%= classDetails._id %>?_method=DELETE"  method="POST">
                 <button class="view" type="submit" style="background-color: red;">Delete</button>
               </form>
-          <% } %>
-
-          <form method="GET" action="/classes/<%= classDetails._id %>">
-            <button class="view" type="submit" style="background-color: green;">View</button>
-          </form>
-          </div>
-        </li>
+              <form method="GET" action="/classes/<%= classDetails._id %>">
+                <button class="view" type="submit" style="background-color: green;">View</button>
+              </form>
+            </div>
+            </li>
+          <% } else if((user.role == 'student' && classDetails.student.includes(user._id.toString()))){ %>
+            <li class="item">
+              <div class="task">
+                <div class="icon">
+                  <img src="https://source.unsplash.com/40x40/?indian" alt="">
+                </div>
+                <div class="task-content">
+                  <div class="name">
+                    <%= classDetails.name %>
+                  </div>
+                  <div clase="description" style="width:150px">
+                    <%= classDetails.description %>
+                  </div>
+                </div>
+              </div>
+    
+                <div class="viewBtn">
+                  <form method="GET" action="/classes/<%= classDetails._id %>">
+                    <button class="view" type="submit" style="background-color: green;">View</button>
+                  </form>
+                </div>
+                </li>
+            <% } %>
+          
       <% }) %>
     </ul>
   <% } %>

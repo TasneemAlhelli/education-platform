@@ -4,7 +4,6 @@ const index = async (req, res) => {
   const classFilter = req._parsedOriginalUrl.pathname
   console.log('request', req._parsedOriginalUrl.pathname)
   let allClasses = await Class.find({}).populate('teacher')
-  let userDetails = req.user
 
   if (classFilter == '/classes') {
     res.render('classes/index', {
@@ -13,24 +12,25 @@ const index = async (req, res) => {
       user: req.user,
       classFilter
     })
-  } else {
+  } else if (classFilter == '/classes/myclasses' && req.user) {
     res.render('classes/index', {
       title: 'My Classes',
       allClasses,
       user: req.user,
       classFilter
     })
+  } else {
+    res.redirect('/classes')
   }
 }
 
 const show = async (req, res) => {
   const user = req.user;
   try {
-    const classInfo = await Class.findById(req.params.id).populate('teacher')
+    const classItem = await Class.findById(req.params.id).populate('teacher')
     res.render('classes/show', {
-      title: `Class - ${classInfo.name}`,
-      classInfo,
-      user
+      title: `Class - ${classItem.name}`,
+      classItem
     })
   } catch (err) {
     console.log(err)
@@ -38,7 +38,7 @@ const show = async (req, res) => {
 }
 
 const newClass = (req, res) => {
-  if (req.user.role == 'teacher') {
+  if (req.user && req.user.role == 'teacher') {
     res.render('classes/new', { title: 'Create Class' })
   } else {
     res.redirect('/classes')
@@ -49,7 +49,7 @@ const create = async (req, res) => {
   req.body.teacher = req.user._id
   try {
     await Class.create(req.body)
-    res.redirect('/classes')
+    res.redirect('/classes/myclasses')
   } catch (error) {
     console.log(error)
   }
@@ -57,8 +57,8 @@ const create = async (req, res) => {
 
 const editClass = async (req, res) => {
   try {
-    const classInfo = await Class.findById(req.params.id)
-    res.render('classes/edit', { title: 'Update Class', classInfo })
+    const classItem = await Class.findById(req.params.id)
+    res.render('classes/edit', { title: 'Update Class', classItem })
   } catch (err) {
     console.log(err)
     res.redirect(`/classes/myclasses`)
@@ -67,25 +67,13 @@ const editClass = async (req, res) => {
 
 const update = async (req, res) => {
   try {
-    const classInfo = await Class.findById(req.params.id)
+    const classItem = await Class.findById(req.params.id)
 
-    await classInfo.updateOne(req.body)
+    await classItem.updateOne(req.body)
     res.redirect('/classes/myclasses')
   } catch (err) {
     console.log(err)
     res.redirect('/classes/myclasses')
-  }
-}
-
-const enroll = async (req, res) => {
-  try {
-    const classItem = await Class.findById(req.params.id)
-    classItem.student.push(req.user._id)
-    await classItem.save()
-
-    res.render('classes/show', { title: 'show page' })
-  } catch (error) {
-    console.log(error)
   }
 }
 
@@ -101,7 +89,6 @@ module.exports = {
   create,
   index,
   show,
-  enroll,
   edit: editClass,
   update,
   delete: deleteClass

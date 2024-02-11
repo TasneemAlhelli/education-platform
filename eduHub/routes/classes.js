@@ -24,9 +24,6 @@ router.put('/:id', classesCtrl.update)
 //post /classes
 router.post('/', classesCtrl.create)
 
-//post /classes/:id
-router.post('/:id', classesCtrl.enroll)
-
 //delete /classes/:id
 router.delete('/myclasses/:id', classesCtrl.delete)
 

@@ -211,3 +211,121 @@ ul.class-items > li.item > .viewBtn > .view:last-child {
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
 }
+
+/*Create class style*/
+
+h2 {
+  font-weight: normal;
+  font-size: 3em;
+  margin: 0 auto;
+  margin-top: 50px;
+  width: 500px;
+  text-align: center;
+}
+
+header {
+  height: 80px;
+}
+
+#form {
+  position: relative;
+}
+
+#classForm {
+  margin: 0 auto;
+  width: 80%;
+  padding-top: 20px;
+  color: black;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formgroup label,
+input,
+select,
+textarea {
+  display: block;
+}
+
+.formgroup label {
+  font-size: 1.5em;
+  margin-top: 20px;
+  padding-left: 12px;
+}
+
+.formgroup input,
+select,
+textarea {
+  width: 100%;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  padding: 10px;
+  font-family: 'Sniglet', cursive;
+  font-size: 1em;
+  color: #676767;
+  transition: border 0.5s;
+  border: solid 3px #98d4f3;
+  box-sizing: border-box;
+}
+
+.formgroup input:focus,
+select:focus,
+textarea:focus {
+  border: solid 3px #3498db;
+}
+
+.formgroup input:hover,
+select:hover,
+textarea:hover {
+  border: solid 3px #3498db;
+}
+
+#submit,
+.editLink {
+  background-color: green;
+  color: #ffffff;
+  height: 50px;
+  cursor: pointer;
+  margin-top: 30px;
+  font-size: 1.29em;
+  transition: background-color 0.3s ease-in-out;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 8px 16px;
+  border: black 2px solid;
+}
+
+.editLink {
+  text-decoration: none;
+  padding: 13px 16px;
+  background-color: #3498db;
+}
+
+.editLink:hover {
+  background-color: #1d70a8;
+}
+
+.formgroup {
+  width: 100%;
+  padding-top: 2px;
+}
+
+.date {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.startDate,
+.endDate {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-right: 30px;
+}
+.endDate {
+  margin-right: 0;
+}

@@ -1,5 +1,5 @@
 const User = require('../models/user')
-
+const Class = require('../models/class')
 const update = async (req, res) => {
   try {
     const user = await User.findById(req.user._id)
@@ -16,6 +16,19 @@ const update = async (req, res) => {
   }
 }
 
+const enroll = async (req, res) => {
+  try {
+    const classItem = await Class.findById(req.params.classId)
+    console.log(classItem)
+    classItem.student.push(req.user._id)
+    await classItem.save()
+    res.render('classes/show', { title: 'Classes', classItem })
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 module.exports = {
-  update
+  update,
+  enroll
 }
