@@ -4,24 +4,24 @@
       <section class="class-info">
         <h1>
           <%= classInfo.name %>
-            </h2>
-            <h3>
-              <%= classInfo.teacher.name %>
-            </h3>
-            <p>
-              <%= classInfo.description %>
-            </p>
-            <p>
-              <%= classInfo.startDate %> - <%= classInfo.endDate %>
-            </p>
-            <p>
-              <%= classInfo.grade %>
-            </p>
-            <% if(user.role==="teacher" ) { %>
-              <p>
-                <a href="/classes/<%= classInfo._id %>/newPost">New Post</a>
-              </p>
-              <% } %>
+        </h1>
+        <h3>
+          <%= classInfo.teacher.name %>
+        </h3>
+        <p>
+          <%= classInfo.description %>
+        </p>
+        <p>
+          <%= classInfo.startDate %> - <%= classInfo.endDate %>
+        </p>
+        <p>
+          <%= classInfo.grade %>
+        </p>
+        <% if(user.role==="teacher" ) { %>
+          <p>
+            <a href="/classes/<%= classInfo._id %>/newPost">New Post</a>
+          </p>
+          <% } %>
       </section>
       <div class="postsList">
         <h2>Posts</h2>
