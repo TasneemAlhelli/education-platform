@@ -269,9 +269,9 @@ header {
 }
 
 .formgroup label,
-input,
-select,
-textarea {
+.formgroup input,
+.formgroup select,
+.formgroup textarea {
   display: block;
 }
 
@@ -282,8 +282,8 @@ textarea {
 }
 
 .formgroup input,
-select,
-textarea {
+.formgroup select,
+.formgroup textarea {
   width: 100%;
   border: none;
   border-radius: 20px;
@@ -298,14 +298,14 @@ textarea {
 }
 
 .formgroup input:focus,
-select:focus,
-textarea:focus {
+.formgroup select:focus,
+.formgroup textarea:focus {
   border: solid 3px #3498db;
 }
 
 .formgroup input:hover,
-select:hover,
-textarea:hover {
+.formgroup select:hover,
+.formgroup textarea:hover {
   border: solid 3px #3498db;
 }
 
@@ -354,4 +354,20 @@ textarea:hover {
 }
 .endDate {
   margin-right: 0;
+}
+
+#imgInput {
+  background: white;
+  height: 70px;
+}
+
+.prevImg {
+  position: relative;
+  display: flex;
+}
+
+#imgImage {
+  position: absolute;
+  right: 30px;
+  top: 6px;
 }
