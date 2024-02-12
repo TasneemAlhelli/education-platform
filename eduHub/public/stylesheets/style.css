@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2&display=swap');
+
 body {
-  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+  font: 14px;
+  font-family: 'Exo 2', sans-serif;
   height: 100vh;
   background: #eeeeee;
 }
@@ -11,7 +14,7 @@ nav {
   padding: 5px;
   align-items: center;
   padding: 50px;
-  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+  font: 14px;
 }
 
 a {
@@ -63,6 +66,14 @@ button:hover {
 #showClass > section {
   margin: 0 30px;
   width: 50%;
+}
+
+h1.slogan {
+  margin-bottom: 0;
+}
+
+h4.slogan {
+  margin-top: 0;
 }
 
 .classInfo h2 {
