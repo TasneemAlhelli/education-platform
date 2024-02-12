@@ -86,7 +86,7 @@ const create = async (req, res) => {
 const editClass = async (req, res) => {
   try {
     const classItem = await Class.findById(req.params.id)
-    if (req.user && req.user._id == classItem._id) {
+    if (req.user && req.user._id.equals(classItem.teacher._id)) {
       res.render('classes/edit', { title: 'Update Class', classItem })
     } else {
       res.redirect(`/classes`)
