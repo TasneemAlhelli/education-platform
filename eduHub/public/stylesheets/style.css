@@ -403,3 +403,10 @@ header {
 .checked {
   color: orange;
 }
+
+#listReview a {
+  display: block;
+  width: 10%;
+  height: 70%;
+  margin: 0 auto;
+}
