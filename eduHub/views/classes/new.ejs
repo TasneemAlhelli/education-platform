@@ -23,12 +23,12 @@
     <div class="formgroup date">
       <div class="startDate">
         <label for="startDate">Start Date</label>
-        <input type="date" name="startDate" required>
+        <input type="date"  min="<%= new Date().toISOString().split('T')[0] %>" name="startDate" required>
       </div>
 
       <div class="endDate">
         <label for="endDate">End Date</label>
-        <input type="date" name="endDate" required>
+        <input type="date" min="<%= new Date().toISOString().split('T')[0] %>" name="endDate" required>
       </div>
     </div>
   
