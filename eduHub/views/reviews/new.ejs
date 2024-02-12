@@ -1,8 +1,12 @@
 <%- include('../partials/header') %>
   <main id="reviewForm">
     <header>
-      <h1>Create Review</h1>
+      <a href="/classes/<%= classId %>" id="backBtnReview">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        Back</a>
+      <h2>Create Review</h2>
     </header>
+
     <section class="form">
       <form action="/classes/<%= classId %>/reviews" method="POST">
         <div class="formgroup" id="name-form">
@@ -32,7 +36,7 @@
 
         <div class="viewBtn">
           <button id="submit" type="submit">Add Review</button>
-          <a href="/classes/<%= classId %>" class="editLink">Back</a>
+          <!-- <a href="/classes/<%= classId %>" class="editLink">Back</a> -->
         </div>
       </form>
     </section>
