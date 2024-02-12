@@ -1,22 +1,26 @@
 <%- include('../partials/header') %>
-  <main id="listReview">
-    <h2>Reviews</h2>
-    <% reviewList.forEach((value)=> { %>
+<main id="listReview">
+  <h2>Reviews</h2>
+  <% if (reviewList.length > 0) {
+    reviewList.forEach((value) => { %>
       <div class="review">
         <p>
           <%= value.message %>
         </p>
         <p>
-          <% for (let i=1; i <=5; i++) { if (i <=(value.rating)) { %>
-            <span class="fa fa-star checked"></span>
+          <% for (let i = 1; i <= 5; i++) { 
+            if (i <= (value.rating)) { %>
+              <span class="fa fa-star checked"></span>
             <% } else { %>
               <span class="fa fa-star"></span>
-              <% } %>
-                <% } %>
+            <% } %>
+          <% } %>
         </p>
       </div>
-      <% }); %>
-        <a href="/classes/<%= reviewList[0].class %>" class="editLink">Back</a>
-
-  </main>
-  <%- include('../partials/footer') %>
+    <% }); 
+  } else { %>
+    <h4>No Reviews</h4>
+  <% } %>
+  <a href="/classes/<%= classId %>" class="editLink">Back</a>
+</main>
+<%- include('../partials/footer') %>
