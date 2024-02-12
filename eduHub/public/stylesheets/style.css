@@ -371,3 +371,35 @@ header {
   right: 30px;
   top: 6px;
 }
+
+#reviewForm {
+  display: grid;
+  width: 80%;
+  margin: 0 auto;
+}
+
+#reviewForm header h1 {
+  text-align: center;
+}
+
+#rating {
+  display: flex;
+  width: 30%;
+}
+
+#listReview {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+}
+
+#listReview > div {
+  border: 2px solid #3498db;
+  border-radius: 5px;
+  background-color: white;
+  margin: 20px;
+}
+
+.checked {
+  color: orange;
+}

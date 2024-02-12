@@ -1,13 +1,40 @@
 <%- include('../partials/header') %>
-  <form action="/classes/<%= classId %>/reviews" method="POST">
-    <label for="message">Review</label><textarea name="message" id="" cols="30" rows="10"></textarea>
-    <p></p>
-    <input type="radio" name="rating" id="1" value="1"><label for="1">1</label>
-    <input type="radio" name="rating" id="2" value="2"><label for="2">2</label>
-    <input type="radio" name="rating" id="3" value="3"><label for="3">3</label>
-    <input type="radio" name="rating" id="4" value="4"><label for="4">4</label>
-    <input type="radio" name="rating" id="5" value="5"><label for="5">5</label>
-    <p>5 is the highest rating</p>
-    <button type="submit">Add Review</button>
-  </form>
+<main id="reviewForm">
+  <header>
+    <h1>Create Review</h1>
+  </header>
+  <section class="form">
+    <form action="/classes/<%= classId %>/reviews" method="POST">
+      <div class="formgroup" id="name-form">
+        <label for="message">Review</label>
+        <br>
+        <textarea name="message" id="" cols="20" rows="5"></textarea>
+      </div>
+      
+      <section id="ratingButtons">
+        <div class="formgroup" id="rating">
+          <label>Rating</label>
+        </div>
+        <br>
+        <div class="formgroup" id="rating">
+          <input type="radio" name="rating" id="1" value="1">
+          <label for="1"> 1 (Low)</label>
+          <input type="radio" name="rating" id="2" value="2">
+          <label for="2"> 2&nbsp</label>
+          <input type="radio" name="rating" id="3" value="3">
+          <label for="3"> 3&nbsp</label>
+          <input type="radio" name="rating" id="4" value="4">
+          <label for="4"> 4&nbsp</label>
+          <input type="radio" name="rating" id="5" value="5">
+          <label for="5"> 5 (High)</label>
+        </div>
+      </section>
+
+      <div class="viewBtn">
+        <button id="submit" type="submit">Add Review</button>
+        <a href="/classes/<%= classId %>" class="editLink">Back</a>
+      </div>
+    </form>
+  </section>
+</main>
   <%- include('../partials/footer') %>
