@@ -34,10 +34,14 @@ const show = async (req, res) => {
 
     // check if enrolled student
     let enrolled = false
-    if (req.user && req.user.role === 'student') {
+    if (
+      req.user &&
+      req.user.role === 'student' &&
+      classItem.student.length > 0
+    ) {
       let counter = 0
       while (!enrolled) {
-        if (classItem.student[counter].id == req.user._id) {
+        if (classItem.student[counter]._id == req.user._id) {
           enrolled = true
         }
         counter++
