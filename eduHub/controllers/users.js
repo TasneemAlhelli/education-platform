@@ -19,10 +19,9 @@ const update = async (req, res) => {
 const enroll = async (req, res) => {
   try {
     const classItem = await Class.findById(req.params.classId)
-    console.log(classItem)
     classItem.student.push(req.user._id)
     await classItem.save()
-    res.render('classes/show', { title: 'Classes', classItem })
+    res.render('classes/show', { title: 'Classes', classItem, enrolled: true })
   } catch (error) {
     console.log(error)
   }

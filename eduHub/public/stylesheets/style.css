@@ -55,6 +55,32 @@ button:hover {
   border-color: #2980b9;
 }
 
+#showClass {
+  display: flex;
+  flex-direction: row;
+}
+
+#showClass > section {
+  margin: 0 30px;
+  width: 50%;
+}
+
+.classInfo h2 {
+  width: 40%;
+}
+
+.classInfo h2,
+.classInfo h3 {
+  display: inline-block;
+  text-align: left;
+}
+
+.reviewbuttons {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
 #flexy {
   display: flex;
   justify-content: center;
