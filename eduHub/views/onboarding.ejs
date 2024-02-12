@@ -1,7 +1,7 @@
 <%- include('./partials/header.ejs') %>
 <main id="onboarding">
   <h1>Select Role</h1>
-  <form action="/users/<%= user._id %>" method="POST">
+  <form action="/users/<%= user._id %>?_method=PUT" method="POST">
     <select name="role">
       <option value="" disabled>Select Role</option>
       <option value="teacher">Teacher</option>

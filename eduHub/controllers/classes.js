@@ -1,6 +1,15 @@
 const Class = require('../models/class')
-
+const Review = require('../models/review')
 const index = async (req, res) => {
+  const classReviews = await Review.aggregate([
+    {
+      $group: {
+        _id: '$class',
+        avgRating: { $avg: '$rating' }
+      }
+    }
+  ])
+
   const classFilter = req._parsedOriginalUrl.pathname
   let allClasses = await Class.find({})
     .populate('teacher')
@@ -11,14 +20,16 @@ const index = async (req, res) => {
       title: 'All Classes',
       allClasses,
       user: req.user,
-      classFilter
+      classFilter,
+      classReviews
     })
   } else if (classFilter == '/classes/myclasses' && req.user) {
     res.render('classes/index', {
       title: 'My Classes',
       allClasses,
       user: req.user,
-      classFilter
+      classFilter,
+      classReviews
     })
   } else {
     res.redirect('/classes')
@@ -86,7 +97,7 @@ const create = async (req, res) => {
 const editClass = async (req, res) => {
   try {
     const classItem = await Class.findById(req.params.id)
-    if (req.user && req.user._id == classItem._id) {
+    if (req.user && req.user._id.equals(classItem.teacher._id)) {
       res.render('classes/edit', { title: 'Update Class', classItem })
     } else {
       res.redirect(`/classes`)

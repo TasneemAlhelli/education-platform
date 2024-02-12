@@ -9,6 +9,6 @@ router.get('/', function (req, res, next) {
 
 router.post('/:classId/enroll', usersCtrl.enroll)
 
-router.post('/:id', usersCtrl.update)
+router.put('/:id', usersCtrl.update)
 
 module.exports = router

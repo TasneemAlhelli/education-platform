@@ -30,7 +30,8 @@ const allReviews = async (req, res) => {
 
   res.render('reviews/show', {
     title: 'All reviews',
-    reviewList
+    reviewList,
+    classId
   })
 }
 
