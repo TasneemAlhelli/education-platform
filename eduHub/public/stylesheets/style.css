@@ -269,9 +269,9 @@ header {
 }
 
 .formgroup label,
-input,
-select,
-textarea {
+.formgroup input,
+.formgroup select,
+.formgroup textarea {
   display: block;
 }
 
@@ -282,8 +282,8 @@ textarea {
 }
 
 .formgroup input,
-select,
-textarea {
+.formgroup select,
+.formgroup textarea {
   width: 100%;
   border: none;
   border-radius: 20px;
@@ -298,14 +298,14 @@ textarea {
 }
 
 .formgroup input:focus,
-select:focus,
-textarea:focus {
+.formgroup select:focus,
+.formgroup textarea:focus {
   border: solid 3px #3498db;
 }
 
 .formgroup input:hover,
-select:hover,
-textarea:hover {
+.formgroup select:hover,
+.formgroup textarea:hover {
   border: solid 3px #3498db;
 }
 
@@ -354,4 +354,52 @@ textarea:hover {
 }
 .endDate {
   margin-right: 0;
+}
+
+#imgInput {
+  background: white;
+  height: 70px;
+}
+
+.prevImg {
+  position: relative;
+  display: flex;
+}
+
+#imgImage {
+  position: absolute;
+  right: 30px;
+  top: 6px;
+}
+
+#reviewForm {
+  display: grid;
+  width: 80%;
+  margin: 0 auto;
+}
+
+#reviewForm header h1 {
+  text-align: center;
+}
+
+#rating {
+  display: flex;
+  width: 30%;
+}
+
+#listReview {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+}
+
+#listReview > div {
+  border: 2px solid #3498db;
+  border-radius: 5px;
+  background-color: white;
+  margin: 20px;
+}
+
+.checked {
+  color: orange;
 }

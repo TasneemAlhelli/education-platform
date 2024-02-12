@@ -51,30 +51,36 @@
         </div>
       <% } %>
     </section>
-    <section class="postSection">
-      <div class="postsList">
-        <h2>Posts</h2>
-        <p>
-          <a href="/classes/<%= classItem._id %>/newPost">New Post</a>
-        </p>
-        <% if(classItem.posts) { %>
-          <% classItem.posts.forEach(value=> { %>
-            <h4>
-              <%= value.heading %>
-            </h4>
+    <% if (user && (classItem.teacher._id.equals(user._id)) || enrolled) { %>
+      <section class="postSection">
+          <h2>Posts</h2>
+          <% if (user.role === 'teacher') { %>
             <p>
-              <%= value.message %>
+              <a href="/classes/<%= classItem._id %>/newPost">New Post</a>
             </p>
-            <p>
-            <form action="/classes/<%= classItem._id %>/<%= value._id %>/remove?_method=DELETE" method="POST">
-              <button class="view">Remove</button>
-            </form>
-            </p>
-            <% });%>
-              <% } %>
-          <% });%>
-        <% } %>
-      </div>
-    </section>
+          <% } %>
+          <% if(classItem.posts.length > 0) { %>
+            <% classItem.posts.forEach(value=> { %>
+              <div class="post">
+                <h4>
+                  <%= value.heading %>
+                </h4>
+                <p>
+                  <%= value.message %>
+                </p>
+                <% if (user.role === 'teacher') { %>
+                  <p>
+                  <form action="/classes/<%= classItem._id %>/<%= value._id %>/remove?_method=DELETE" method="POST">
+                    <button class="view">Remove</button>
+                  </form>
+                  </p>
+                <% } %>
+              </div>
+            <% }) %>
+          <% } else { %>
+            <p>Currently No Posts</p>
+          <% } %>
+      </section>
+    <% } %>
   </main>
 <%- include('../partials/footer.ejs') %>

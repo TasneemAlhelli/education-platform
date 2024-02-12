@@ -1,14 +1,23 @@
 <%- include('../partials/header') %>
+<main id="listReview">
   <h2>Reviews</h2>
   <% reviewList.forEach((value)=> { %>
-    <p>
-      <%= value.message %>
-    </p>
-    <p>
-      <%= value.rating %>
-    </p>
-    <% }); %>
-      <form action="/classes/myclasses" method="GET">
-        <button type="submit">Back</button>
-      </form>
-      <%- include('../partials/footer') %>
+    <div class="review">
+      <p>
+        <%= value.message %>
+      </p>
+      <p>
+        <% for (let i = 1; i <= 5; i++) { 
+          if (i <= (value.rating)) { %>
+            <span class="fa fa-star checked"></span>
+          <% } else { %>
+            <span class="fa fa-star"></span>
+          <% } %>
+        <% } %>
+      </p>
+    </div>
+  <% }); %>
+  <a href="/classes/<%= reviewList[0].class %>" class="editLink">Back</a>
+
+</main>
+<%- include('../partials/footer') %>
