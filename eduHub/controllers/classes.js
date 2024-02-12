@@ -36,13 +36,13 @@ const show = async (req, res) => {
     if (req.user && req.user.role === 'student') {
       let counter = 0
       while (!enrolled) {
-        if (classItem.student[counter].id == req.user._id) {
+        if (classItem.student[counter]._id == req.user._id) {
           enrolled = true
         }
         counter++
       }
     }
-    
+
     res.render('classes/show', {
       title: `Class - ${classItem.name}`,
       classItem,
@@ -63,9 +63,11 @@ const newClass = (req, res) => {
 
 const create = async (req, res) => {
   req.body.teacher = req.user._id
+
   const { image } = req.files
   req.body.image = image.name
   image.mv('public/images/' + image.name)
+
   console.log(req.body)
   console.log(req.files)
   try {
