@@ -105,8 +105,10 @@ button:hover {
 }
 
 .logoNav {
-  width: 100px;
+  width: 200px;
   margin-right: 20px;
+  background: transparent;
+  height: 50px;
 }
 
 .wrapContent {
