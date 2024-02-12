@@ -111,6 +111,10 @@ button:hover {
   height: 50px;
 }
 
+.homeNav {
+  padding: 0px;
+}
+
 .wrapContent {
   height: 500px;
   background-image: url('../images/homepageApple.jpg');
