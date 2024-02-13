@@ -1,5 +1,6 @@
 const Class = require('../models/class')
 const Review = require('../models/review')
+
 const index = async (req, res) => {
   const classReviews = await Review.aggregate([
     {

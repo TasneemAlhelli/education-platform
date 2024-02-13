@@ -11,11 +11,14 @@ var session = require('express-session')
 var passport = require('passport')
 const fileUpload = require('express-fileupload')
 
+const nodemailer = require('nodemailer')
+
 var indexRouter = require('./routes/index')
 var usersRouter = require('./routes/users')
 const classRouter = require('./routes/classes')
 const postsRouter = require('./routes/posts')
-const reviewsRouter = require("./routes/reviews");
+const reviewsRouter = require('./routes/reviews')
+const contactsRouter = require('./routes/contacts')
 
 var app = express()
 
@@ -53,7 +56,8 @@ app.use('/', indexRouter)
 app.use('/users', usersRouter)
 app.use('/classes', classRouter)
 app.use('/', postsRouter)
-app.use("/", reviewsRouter);
+app.use('/', reviewsRouter)
+app.use('/contact', contactsRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
