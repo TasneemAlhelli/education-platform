@@ -14,12 +14,26 @@
               <div class="name">
                 <%= classDetails.name %>
               </div>
-					    <div clase="description" style="width:150px">
+					    <div class="description">
                 <%= classDetails.description %>
               </div>
             </div>
           </div>
+          <p>
+            <% 
+            let classReview = classReviews.find((review) =>
+            review._id.equals(classDetails._id))
+            classReview = classReview ? classReview.avgRating : null
 
+            if (classReview !== null) {
+              for (let i = 1; i <= 5; i++) {  
+                if (i <= classReview) { %>
+                  <span class="fa fa-star checked"></span>
+              <% } else { %>
+                <span class="fa fa-star"></span>
+              <% }}      
+            } %> 
+          </p>
           <div class="viewBtn">
             <% if(user && user.role == 'student' && !classDetails.student.includes(user._id.toString())){ %>
               <form method="POST" action="/users/<%= classDetails._id %>/enroll">
@@ -33,6 +47,7 @@
         </li>
       <% }) %>
   </ul>
+  
   <% } else if (classFilter == '/classes/myclasses') { %>
     <ul class="class-items">
       <div class="myClass-header">
@@ -47,18 +62,33 @@
         <li class="item">
           <div class="task">
             <div class="icon">
-              <img src="https://source.unsplash.com/40x40/?indian" alt="">
+              <img src="/images/<%= classDetails.image %>" alt="">
             </div>
             <div class="task-content">
               <div class="name">
                 <%= classDetails.name %>
               </div>
-              <div clase="description" style="width:150px">
+              <div class="description">
                 <%= classDetails.description %>
               </div>
             </div>
           </div>
+          <p>
+          <% 
+          let classReview = classReviews.find((review) =>
+          review._id.equals(classDetails._id))
+          classReview = classReview ? classReview.avgRating : null
 
+          if (classReview !== null) {
+            for (let i = 1; i <= 5; i++) {  
+              if (i <= classReview) { %>
+                <span class="fa fa-star checked"></span>
+            <% } else { %>
+              <span class="fa fa-star"></span>
+            <% }
+            }   
+          } %> 
+          </p>
             <div class="viewBtn">
               <form action="/classes/<%= classDetails._id %>/edit" method="GET">
                 <button class="view" type="submit">Edit</button>
@@ -71,31 +101,30 @@
               </form>
             </div>
             </li>
-          <% } else if((user.role == 'student' && classDetails.student.includes(user._id.toString()))){ %>
-            <li class="item">
-              <div class="task">
-                <div class="icon">
-                  <img src="/images/<%= classDetails.image %>" alt="">
+        <% } else if((user.role == 'student' && classDetails.student.includes(user._id.toString()))) { %>
+          <li class="item">
+            <div class="task">
+              <div class="icon">
+                <img src="/images/<%= classDetails.image %>" alt="">
+              </div>
+              <div class="task-content">
+                <div class="name">
+                  <%= classDetails.name %>
                 </div>
-                <div class="task-content">
-                  <div class="name">
-                    <%= classDetails.name %>
-                  </div>
-                  <div clase="description" style="width:150px">
-                    <%= classDetails.description %>
-                  </div>
+
+                <div clase="description" >
+                  <%= classDetails.description %>
                 </div>
               </div>
-    
-                <div class="viewBtn">
-                  <form method="GET" action="/classes/<%= classDetails._id %>">
-                    <button class="view" type="submit" style="background-color: green;">View</button>
-                  </form>
-                </div>
-                </li>
-            <% } %>
-          
-      <% }) %>
-    </ul>
-  <% } %>
+            </div>
+  
+              <div class="viewBtn">
+                <form method="GET" action="/classes/<%= classDetails._id %>">
+                  <button class="view" type="submit" style="background-color: green;">View</button>
+                </form>
+              </div>
+              </li>
+        <% }}) %>
+  </ul>
+<% } %>
 <%- include('../partials/footer.ejs') %>

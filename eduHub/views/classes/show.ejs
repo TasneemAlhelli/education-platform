@@ -2,17 +2,17 @@
 <%- include('../partials/navbar.ejs') %>
   <main id="showClass">
     <section class="classSection">
+      <h2 id="className">
+        <%= classItem.name %>
+      </h2>
       <section class="classInfo">
-        <h2>
-          <%= classItem.name %>
-        </h2>
         <h3>
-          <%= classItem.teacher.name %>
+          T. <%= classItem.teacher.name %>
         </h3>
-        <p>
-          <%= classItem.description %>
+        <p class="description">
+          <span id="desc">Description:</span> <%= classItem.description %>
         </p>
-        <p class="date">
+        <p class="dateShow">
           <%           
           let startDate = new Date(classItem.startDate)
           startDate = startDate.toISOString().split('T')[0];
@@ -20,16 +20,19 @@
           let endDate = new Date(classItem.endDate)
           endDate = endDate.toISOString().split('T')[0];
           %>
-          <b>From: </b><%= startDate %> <b>To: </b><%= endDate %>
+          <b>Duration: </b><%= startDate %> <b> - </b> <%= endDate %>
         </p>
+
         <p>
           <b>Grade: </b><%= classItem.grade %>
         </p>
+
       </section>
       <hr>
+
       <section class="reviewbuttons">
         <form action="/classes/<%= classItem._id %>/all">
-          <button type="submit">View All Reviews</button>
+          <button type="submit" style="margin-right: 15px;">View All Reviews</button>
         </form>
         <% if (enrolled) { %>
           <form action="/classes/<%= classItem._id %>/reviews">
@@ -37,8 +40,10 @@
           </form>
         <% } %>
       </section>
+
       <% if (user && (classItem.teacher._id.equals(user._id) || enrolled)) { %>
         <hr>
+
         <div class="students">
           <h3>Registered Students</h3>
           <% if (classItem.student.length == 0) { %>
@@ -49,33 +54,53 @@
             <% }) %>  
           <% } %>
         </div>
+
       <% } %>
     </section>
-    <% if  (user && (classItem.teacher._id.equals(user._id)) || enrolled) { %>
+    <% if (user && (classItem.teacher._id.equals(user._id)) || enrolled) { %>
       <section class="postSection">
-        <div class="postsList">
-          <h2>Posts</h2>
+        <div class="postheader">
+          <h2 id="postShow">Posts</h2>
           <% if (user.role === 'teacher') { %>
             <p>
               <a href="/classes/<%= classItem._id %>/newPost">New Post</a>
             </p>
           <% } %>
-          <% if(classItem.posts) { %>
-            <% classItem.posts.forEach(value=> { %>
-              <h4>
-                <%= value.heading %>
-              </h4>
-              <p>
-                <%= value.message %>
-              </p>
-              <p>
-              <form action="/classes/<%= classItem._id %>/<%= value._id %>/remove?_method=DELETE" method="POST">
-                <button class="view">Remove</button>
-              </form>
-              </p>
-            <% }) %>
-          <% }%>
         </div>
+          <% if(classItem.posts.length > 0) { %>
+            <% classItem.posts.forEach(value=> { %>
+              <div class="post">
+                <ul class="class-items" id="card-item">
+                  <li class="item" id="card">
+                    <div class="task">
+                      <div class="task-content">
+                        <div class="name">
+                          <%= value.heading  %>
+                        </div>
+                        <div class="description">
+                          <%= value.message %>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="viewBtn">
+                      <% if (user.role === 'teacher') { %>
+                        <form action="/classes/<%= classItem._id %>/<%= value._id %>/remove?_method=DELETE" method="POST" style="height: 30px">
+                          <!-- <button class="view">Remove</button> -->
+                          <button id="trash">
+                            <i class="fa fa-trash-o" style="font-size:20px; color:red"></i>
+                          </button>
+                        </form>
+                      <% } %>
+                    </div>
+
+                  </li>
+                </ul>
+              </div>
+            <% }) %>
+          <% } else { %>
+            <p>Currently No Posts</p>
+          <% } %>
       </section>
     <% } %>
   </main>

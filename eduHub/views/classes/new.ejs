@@ -1,7 +1,11 @@
+
 <%- include('../partials/header.ejs') %>
 
   
 <header>
+  <a href="/classes/myclasses" id="backBtn">
+    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+    Back</a>
   <h2>Create Class</h2>
 </header>
 
@@ -23,12 +27,12 @@
     <div class="formgroup date">
       <div class="startDate">
         <label for="startDate">Start Date</label>
-        <input type="date" name="startDate" required>
+        <input type="date"  min="<%= new Date().toISOString().split('T')[0] %>" name="startDate" required>
       </div>
 
       <div class="endDate">
         <label for="endDate">End Date</label>
-        <input type="date" name="endDate" required>
+        <input type="date" min="<%= new Date().toISOString().split('T')[0] %>" name="endDate" required>
       </div>
     </div>
   
@@ -45,14 +49,14 @@
 
     <div class="formgroup">
       <label for="image">Image</label>
-        <input type="file" name="image" id="imgInput" required>
+      <input type="file" name="image" id="imgInput" required>
     </div>
     <br>
   
   
     <div class="viewBtn">
       <button id="submit" type="submit">Create Class</button>
-      <a href="/classes/myclasses" class="editLink">Back</a>
+      <!-- <a href="/classes/myclasses" class="editLink">Back</a> -->
     </div>
   
   </form>

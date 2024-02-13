@@ -1,12 +1,37 @@
-<%- include('./partials/header.ejs') %>
-<%- include('./partials/navbar.ejs') %>
-    <div class="grid">
-        <div class="motto">
-            <h1>Education for Everyone</h1>
-            <h4>Accessable from Everywhere</h4>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>Document</title>
+    <div class="wrapContent">
+        <nav class="homeNav">
+            <div class="navigationBtn">
+                <a href="/" class="btn">Home</a> |
+                <a href="/classes" class="btn">All Classes</a> |
+                <% if (user) { %>
+                    <a href="/classes/myclasses" class="btn">My classes</a> |
+                    <a class="loginBtn btn" href="/logout">LOG OUT</a>
+                    <% } else { %>
+                        <a class="loginBtn btn" href="/auth/google">LOG IN</a>
+                        <% } %>
+            </div>
+            <div><a href="/"><img class="logoNav" src="../images/eduhubLogo.png" alt=""></a></div>
+        </nav>
+        <div class="grid">
+            <div class="motto">
+                <h1 class="slogan">Education for Everyone</h1>
+                <h4 class="slogan">Accessable from Everywhere</h4>
+            </div>
         </div>
+        <!-- wrapContent div end -->
     </div>
-    <!-- wrapContent div end --></div>
+</head>
+
+<body>
+
     <div id="flexy">
         <div class="wrapClasses">
             <h2>Our Featured Classes</h2>
@@ -19,4 +44,4 @@
             </div>
         </div>
     </div>
-<%- include('./partials/footer.ejs') %>
+    <%- include('./partials/footer.ejs') %>
