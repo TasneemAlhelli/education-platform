@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/style.css">
-    <title>Document</title>
+<%- include('./partials/header') %>
+<body>
     <div class="wrapContent">
         <nav class="homeNav">
             <div class="navigationBtn">
@@ -16,9 +10,9 @@
                 <% if (user) { %>
                     <a href="/classes/myclasses" class="btn">My classes</a> |
                     <a class="loginBtn btn" href="/logout">LOG OUT</a>
-                    <% } else { %>
-                        <a class="loginBtn btn" href="/auth/google">LOG IN</a>
-                        <% } %>
+                <% } else { %>
+                    <a class="loginBtn btn" href="/auth/google">LOG IN</a>
+                <% } %>
             </div>
             <div><a href="/"><img class="logoNav" src="../images/eduhubLogo.png" alt=""></a></div>
         </nav>
@@ -28,22 +22,20 @@
                 <h4 class="slogan">Accessable from Everywhere</h4>
             </div>
         </div>
-        <!-- wrapContent div end -->
     </div>
-</head>
-
-<body>
 
     <div id="flexy">
         <div class="wrapClasses">
             <h2>Our Featured Classes</h2>
             <div class="gridClasses">
-                <div class="classImg">
-                    <p>Chemistry</p>
-                    <img src="/images/chem.jpg" alt="">
-                    <a href="/classes" class="btn">View More</a>
-                </div>
+                <% featuredClasses.forEach((classItem) => { %>
+                    <div class="classImg">
+                        <p><%= classItem.name %></p>
+                        <img src="/images/<%= classItem.image %>" alt="">
+                        <a href="/classes/<%= classItem._id %>" class="btn">View More</a>
+                    </div>
+                <% }) %>
             </div>
         </div>
     </div>
-    <%- include('./partials/footer.ejs') %>
+<%- include('./partials/footer.ejs') %>
