@@ -2,7 +2,7 @@
 <main id="listReview">
   <h2>Reviews</h2>
   <% if (reviewList.length > 0) {
-    reviewList.forEach((value) => { %>
+    reviewList.forEach((value) => { %>      
       <div class="review">
         <p>
           <%= value.message %>
@@ -17,6 +17,7 @@
           <% } %>
         </p>
       </div>
+
     <% }); 
   } else { %>
     <h4>No Reviews</h4>

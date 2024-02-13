@@ -2,10 +2,10 @@
 <%- include('../partials/navbar.ejs') %>
   <main id="showClass">
     <section class="classSection">
+      <h2 id="className">
+        <%= classItem.name %>
+      </h2>
       <section class="classInfo">
-        <h2 id="className">
-          <%= classItem.name %>
-        </h2>
         <h3>
           T. <%= classItem.teacher.name %>
         </h3>

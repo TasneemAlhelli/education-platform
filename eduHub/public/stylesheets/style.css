@@ -76,8 +76,17 @@ h4.slogan {
   margin-top: 0;
 }
 
-.classInfo h2 {
-  width: 40%;
+.classInfo {
+  background: white;
+  padding: 1px 12px;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  margin: 19px 0;
+}
+
+.classSection h2 {
+  width: 60%;
+  font-weight: bold;
 }
 
 /* .classInfo h2,
@@ -184,7 +193,7 @@ ul.class-items > li.item > .task {
   align-items: center;
   width: 240px;
   justify-content: space-between;
-  width: 90%;
+  width: 85%;
 }
 
 ul.class-items > li.item > .task > .icon,
@@ -228,7 +237,6 @@ ul.class-items > li.item > .viewBtn {
   justify-content: flex-end;
   margin-left: auto;
   margin-right: 10px;
-  margin-top: 35px;
 }
 
 ul.class-items > li.item > .viewBtn > form > .view {
@@ -268,13 +276,30 @@ h2 {
   font-weight: normal;
   font-size: 3em;
   margin: 0 auto;
-  margin-top: 50px;
   width: 500px;
   text-align: center;
 }
 
+#backBtn {
+  position: absolute;
+  left: 10%;
+  text-decoration: none;
+}
+
+#backBtnReview {
+  position: absolute;
+  left: 0.5%;
+  text-decoration: none;
+}
+
 header {
   height: 80px;
+  /*added*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  position: relative;
 }
 
 #form {
@@ -418,10 +443,11 @@ header {
 }
 
 #listReview > div {
-  border: 2px solid #3498db;
   border-radius: 5px;
   background-color: white;
   margin: 20px;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.1);
+  padding: 1px;
 }
 
 .checked {
@@ -432,7 +458,7 @@ header {
 #className {
   margin: 0;
   margin-top: 0;
-  width: 0;
+  /* width: 0; */
   text-align: left;
 }
 
