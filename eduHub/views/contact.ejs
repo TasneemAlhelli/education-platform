@@ -1,0 +1,55 @@
+
+<%- include('./partials/header.ejs') %>
+
+<header>
+  <a href="/" id="backBtn">
+    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+    Back</a>
+  <h2>Contact us </h2>
+</header>
+
+<div id="form">
+  <form id="classForm" action="/contact" method="POST">
+
+    <div class="formgroup" id="name-form">
+      <label for="name">From: </label>
+      <input class="newInputs" type="email" name="name"  value="<%= user ? user.email : '' %> ">
+    </div>
+
+    <br>
+
+    <div class="formgroup">
+      <label for="teacher">To: </label>
+      <select class="newInputs" name="teacher">
+        <% teachersName.forEach((tName) => { %>
+          <option value="<%= tName.email %>">T. <%= tName.name %></option>
+        <% }); %>
+      </select>
+    </div>
+
+    <br>
+
+    <div class="formgroup" id="name-form">
+      <label for="subject">Subject</label>
+      <input name="subject" type="text" class="newInputs" required>
+    </div>
+    <br>
+
+    <div class="formgroup" id="description-form">
+      <label for="description">Description</label>
+      <textarea name="description" cols="160" rows="5" required></textarea>
+    </div>
+    <br>
+
+  
+    
+  
+    <div class="viewBtn">
+      <button id="submit" type="submit">Send</button>
+      <!-- <a href="/classes/myclasses" class="editLink">Back</a> -->
+    </div>
+  
+  </form>
+</div>
+
+<%- include('./partials/footer.ejs') %>
