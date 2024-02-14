@@ -27,18 +27,16 @@
           <b>Grade: </b><%= classItem.grade %>
         </p>
 
-      </section>
-      <hr>
-
-      <section class="reviewbuttons">
-        <form action="/classes/<%= classItem._id %>/all">
-          <button type="submit" style="margin-right: 15px;">View All Reviews</button>
-        </form>
-        <% if (enrolled) { %>
-          <form action="/classes/<%= classItem._id %>/reviews">
-              <button>Leave Review</button>
+        <section class="reviewbuttons">
+          <form action="/classes/<%= classItem._id %>/all">
+            <button type="submit" style="margin-right: 15px;">View All Reviews</button>
           </form>
-        <% } %>
+          <% if (enrolled) { %>
+            <form action="/classes/<%= classItem._id %>/reviews">
+                <button>Leave Review</button>
+            </form>
+          <% } %>
+        </section>
       </section>
 
       <% if (user && (classItem.teacher._id.equals(user._id) || enrolled)) { %>
