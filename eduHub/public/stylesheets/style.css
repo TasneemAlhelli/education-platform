@@ -187,8 +187,14 @@ footer {
   grid-template-rows: repeat(3, 1fr);
 }
 
+.classImg {
+  height: auto;
+  text-align: center;
+}
+
 .classImg > img {
   width: 300px;
+  height: auto;
 }
 
 /*Class Index page Style*/
