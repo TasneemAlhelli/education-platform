@@ -12,7 +12,7 @@
             </div>
             <div class="task-content">
               <div class="name">
-                <%= classDetails.name %> - <%= classDetails.teacher.name %>
+                <%= classDetails.name %> - T. <%= classDetails.teacher.name %>
               </div>
 					    <div class="description">
                 <%= classDetails.description %>
@@ -40,7 +40,7 @@
           <div class="viewBtn">
             <% if(user && user.role == 'student' && !classDetails.student.includes(user._id.toString())){ %>
               <form method="POST" action="/users/<%= classDetails._id %>/enroll">
-                <button class="view" type="submit">Enroll</button>
+                <button class="view" type="submit" style="background-color: #b05d75;">Enroll</button>
               </form>
             <% } %>
             <form method="GET" action="/classes/<%= classDetails._id %>">
@@ -56,7 +56,7 @@
       <div class="myClass-header">
         <h2><%= title %></h2>
         <% if(user && user.role == 'teacher'){ %>
-          <a class="createLink" href="/classes/new">Create</a>
+          <a class="createLink" href="/classes/new">Create Class</a>
         <% } %>
       </div>
 
@@ -144,7 +144,7 @@
   
               <div class="viewBtn">
                 <form method="GET" action="/classes/<%= classDetails._id %>">
-                  <button class="view" type="submit" style="background-color: green;">View</button>
+                  <button class="view" type="submit">View</button>
                 </form>
               </div>
               </li>

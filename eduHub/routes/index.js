@@ -21,7 +21,7 @@ router.get('/', async function (req, res, next) {
       { $limit: 3 }
     ])
 
-    res.render('index', { title: 'Express', featuredClasses })
+    res.render('index', { title: 'EduHub', featuredClasses })
   }
 })
 
