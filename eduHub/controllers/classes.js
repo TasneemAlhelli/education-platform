@@ -112,10 +112,15 @@ const editClass = async (req, res) => {
 const update = async (req, res) => {
   try {
     const classItem = await Class.findById(req.params.id)
-    const { image } = req.files
-    req.body.image = image.name
-    image.mv('public/images/' + image.name)
 
+    const image = req.files ? req.files.image : null
+    if (image) {
+      req.body.image = image.name
+      image.mv('public/images/' + image.name)
+    } else {
+      req.body.image = classItem.image
+    }
+    
     await classItem.updateOne(req.body)
     res.redirect('/classes/myclasses')
   } catch (err) {
