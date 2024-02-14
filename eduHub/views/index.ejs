@@ -3,26 +3,23 @@
     <div class="grid">
         <section class="headerImg">
         </section>
-        <section class="motto">
-            <h1 class="slogan">Education for Everyone</h1>
-            <h4 class="slogan">Accessable from Everywhere</h4>
-            <p>Education platform that provides an interactive environment where teachers create and offer classes for students to enroll in. Each class is meticulously crafted by the teacher to ensure an engaging learning experience</p>
-        </section>
     </div>
 
     <div id="flexy">
         <div class="wrapClasses">
-            <h2>Our Featured Classes</h2>
-            <div class="gridClasses">
-                <% featuredClasses.forEach((classItem) => { %>
-                    <div class="classImg">
-                        <p><%= classItem.name %></p>
-                        <img src="/images/<%= classItem.image %>" alt="">
-                        <br></br>
-                        <a href="/classes/<%= classItem._id %>" class="btn">View More</a>
-                    </div>
-                <% }) %>
-            </div>
+            <% if (featuredClasses.length) { %>
+                <h2>Our Featured Classes</h2>
+                <div class="gridClasses">
+                    <% featuredClasses.forEach((classItem) => { %>
+                        <div class="classImg">
+                            <p><%= classItem.name %></p>
+                            <img src="/images/<%= classItem.image %>" alt="">
+                            <br></br>
+                            <a href="/classes/<%= classItem._id %>" class="">View More</a>
+                        </div>
+                    <% }) %>
+                </div>
+            <% } %>
         </div>
     </div>
 <%- include('./partials/footer.ejs') %>

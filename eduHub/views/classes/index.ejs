@@ -12,7 +12,7 @@
             </div>
             <div class="task-content">
               <div class="name">
-                <%= classDetails.name %>
+                <%= classDetails.name %> - <%= classDetails.teacher.name %>
               </div>
 					    <div class="description">
                 <%= classDetails.description %>
@@ -41,7 +41,7 @@
               </form>
             <% } %>
             <form method="GET" action="/classes/<%= classDetails._id %>">
-              <button class="view" type="submit" style="background-color: green;">View</button>
+              <button class="view" type="submit">View</button>
             </form>
           </div>
         </li>
@@ -90,15 +90,16 @@
           } %> 
           </p>
             <div class="viewBtn">
+              <form method="GET" action="/classes/<%= classDetails._id %>">
+                <button class="view" type="submit">View</button>
+              </form>
               <form action="/classes/<%= classDetails._id %>/edit" method="GET">
-                <button class="view" type="submit">Edit</button>
+                <button class="view edit" type="submit">Edit</button>
               </form>
               <form action="./myclasses/<%= classDetails._id %>?_method=DELETE"  method="POST">
-                <button class="view" type="submit" style="background-color: red;">Delete</button>
+                <button class="view delete" type="submit" >Delete</button>
               </form>
-              <form method="GET" action="/classes/<%= classDetails._id %>">
-                <button class="view" type="submit" style="background-color: green;">View</button>
-              </form>
+            
             </div>
             </li>
         <% } else if((user.role == 'student' && classDetails.student.includes(user._id.toString()))) { %>

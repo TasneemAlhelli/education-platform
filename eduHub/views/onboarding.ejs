@@ -1,6 +1,8 @@
 <%- include('./partials/header.ejs') %>
 <main id="onboarding">
-  <h1>Select Role</h1>
+  <header>
+    <h2>Select Role</h2>
+  </header>
   <form action="/users/<%= user._id %>?_method=PUT" method="POST">
     <select name="role">
       <option value="" disabled>Select Role</option>
@@ -8,7 +10,7 @@
       <option value="student">Student</option>
     </select>
     <br>
-    <button type="submit">Submit</button>
+    <button id="submit" type="submit">Submit</button>
   </form>
 </main>
 <%- include('./partials/footer.ejs') %>
