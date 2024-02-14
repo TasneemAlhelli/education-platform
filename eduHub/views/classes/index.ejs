@@ -40,7 +40,7 @@
           <div class="viewBtn">
             <% if(user && user.role == 'student' && !classDetails.student.includes(user._id.toString())){ %>
               <form method="POST" action="/users/<%= classDetails._id %>/enroll">
-                <button class="view" type="submit">Enroll</button>
+                <button class="view" type="submit" style="background-color: #b05d75;">Enroll</button>
               </form>
             <% } %>
             <form method="GET" action="/classes/<%= classDetails._id %>">
