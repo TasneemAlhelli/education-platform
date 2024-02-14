@@ -515,3 +515,8 @@ hr {
   height: 70%;
   margin: 0 auto;
 }
+
+.form {
+  display: grid;
+  justify-content: center;
+}
