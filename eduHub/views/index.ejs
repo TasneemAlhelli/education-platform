@@ -1,27 +1,13 @@
 <%- include('./partials/header') %>
-<body>
-    <div class="wrapContent">
-        <nav class="homeNav">
-            <div class="navigationBtn">
-                <a href="/" class="btn">Home</a> |
-                <a href="/classes" class="btn">All Classes</a> |
-                <a href="/contact" class="btn">Contact us</a> |
-
-                <% if (user) { %>
-                    <a href="/classes/myclasses" class="btn">My classes</a> |
-                    <a class="loginBtn btn" href="/logout">LOG OUT</a>
-                <% } else { %>
-                    <a class="loginBtn btn" href="/auth/google">LOG IN</a>
-                <% } %>
-            </div>
-            <div><a href="/"><img class="logoNav" src="../images/eduhubLogo.png" alt=""></a></div>
-        </nav>
-        <div class="grid">
-            <div class="motto">
-                <h1 class="slogan">Education for Everyone</h1>
-                <h4 class="slogan">Accessable from Everywhere</h4>
-            </div>
-        </div>
+<%- include('./partials/navbar') %>
+    <div class="grid">
+        <section class="headerImg">
+        </section>
+        <section class="motto">
+            <h1 class="slogan">Education for Everyone</h1>
+            <h4 class="slogan">Accessable from Everywhere</h4>
+            <p>Education platform that provides an interactive environment where teachers create and offer classes for students to enroll in. Each class is meticulously crafted by the teacher to ensure an engaging learning experience</p>
+        </section>
     </div>
 
     <div id="flexy">
@@ -32,6 +18,7 @@
                     <div class="classImg">
                         <p><%= classItem.name %></p>
                         <img src="/images/<%= classItem.image %>" alt="">
+                        <br></br>
                         <a href="/classes/<%= classItem._id %>" class="btn">View More</a>
                     </div>
                 <% }) %>
