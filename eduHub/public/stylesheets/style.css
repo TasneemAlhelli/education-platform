@@ -133,14 +133,18 @@ footer {
   text-align: center;
   color: #f2e2c4;
   background-color: #4b526f;
-  bottom: 0;
-  position: fixed;
+  bottom: -83px;
+  position: relative;
   width: 100%;
 }
 
 .students h3 {
   color: #4b526f;
   font-size: 25px;
+}
+
+.students {
+  margin-bottom: 10%;
 }
 
 .wrapContent {
