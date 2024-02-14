@@ -1,12 +1,18 @@
-<nav>
+<nav class="homeNav">
+  <div>
+    <a href="/"><img class="logoNav" src="../images/eduhubLogo.png" alt=""></a>
+  </div>
   <div class="navigationBtn">
     <a href="/" class="btn">Home</a> |
     <a href="/classes" class="btn">All Classes</a> |
     <% if (user) { %>
       <a href="/classes/myclasses" class="btn">My classes</a> |
+    <% } %>
+    <a href="/contact" class="btn">Contact us</a> |
+    <% if (user) { %>
       <a class="loginBtn btn" href="/logout">LOG OUT</a>
-      <% } else { %>
-        <a class="loginBtn btn" href="/auth/google">LOG IN</a>
-        <% } %>
+    <% } else { %>
+      <a class="loginBtn btn" href="/auth/google">LOG IN</a>
+    <% } %>
   </div>
 </nav>

@@ -4,7 +4,7 @@ body {
   font: 14px;
   font-family: 'Exo 2', sans-serif;
   height: 100vh;
-  background: #eeeeee;
+  background: #f5fefe;
 }
 
 nav {
@@ -136,10 +136,14 @@ h4.slogan {
 
 .homeNav {
   padding: 0px;
+  margin: 10px;
 }
 
 .wrapContent {
   height: 500px;
+}
+
+.headerImg {
   background-image: url('../images/homepageApple.jpg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -147,13 +151,23 @@ h4.slogan {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(6, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  margin: 20px 0;
+  height: 50%;
 }
 
 .motto {
-  grid-area: 2 / 2 / 6 / 6;
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
   font-size: 30px;
+  justify-content: center;
+  width: 80%;
+}
+
+.motto p {
+  font-size: 16px;
 }
 
 .wrapClasses {
@@ -162,8 +176,8 @@ h4.slogan {
 
 .gridClasses {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
 }
 
 .classImg > img {
@@ -514,4 +528,9 @@ hr {
   width: 10%;
   height: 70%;
   margin: 0 auto;
+}
+
+.form {
+  display: grid;
+  justify-content: center;
 }
