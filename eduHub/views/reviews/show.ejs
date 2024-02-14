@@ -1,6 +1,12 @@
 <%- include('../partials/header') %>
-<main id="listReview">
+<header>
+  <a href="/classes/<%= classId %>" id="backBtn">
+    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+    Back
+  </a>
   <h2>Reviews</h2>
+</header>
+<main id="listReview">
   <% if (reviewList.length > 0) {
     reviewList.forEach((value) => { %>      
       <div class="review">
@@ -17,11 +23,9 @@
           <% } %>
         </p>
       </div>
-
     <% }); 
   } else { %>
     <h4>No Reviews</h4>
   <% } %>
-  <a href="/classes/<%= classId %>" class="editLink">Back</a>
 </main>
 <%- include('../partials/footer') %>

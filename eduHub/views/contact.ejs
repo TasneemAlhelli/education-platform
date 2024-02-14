@@ -10,13 +10,11 @@
 
 <div id="form">
   <form id="classForm" action="/contact" method="POST">
-
     <div class="formgroup" id="name-form">
       <label for="name">From: </label>
-      <input class="newInputs" type="email" name="name"  value="<%= user ? user.email : '' %> ">
+      <% const disabled = user ? 'disabled' : ''  %>
+      <input class="newInputs" type="email" name="name"  value="<%= user ? user.email : '' %>" <%= disabled %>>
     </div>
-
-    <br>
 
     <div class="formgroup">
       <label for="teacher">To: </label>
@@ -26,8 +24,6 @@
         <% }); %>
       </select>
     </div>
-
-    <br>
 
     <div class="formgroup" id="name-form">
       <label for="subject">Subject</label>
@@ -41,14 +37,9 @@
     </div>
     <br>
 
-  
-    
-  
     <div class="viewBtn">
       <button id="submit" type="submit">Send</button>
-      <!-- <a href="/classes/myclasses" class="editLink">Back</a> -->
     </div>
-  
   </form>
 </div>
 

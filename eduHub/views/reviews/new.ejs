@@ -1,11 +1,12 @@
 <%- include('../partials/header') %>
+  <header>
+    <a href="/classes/myclasses" id="backBtn">
+      <i class="fa fa-arrow-left" aria-hidden="true"></i>
+      Back
+    </a>
+    <h2>Create Review</h2>
+  </header>
   <main id="reviewForm">
-    <header>
-      <a href="/classes/<%= classId %>" id="backBtnReview">
-        <i class="fa fa-arrow-left" aria-hidden="true"></i>
-        Back</a>
-      <h2>Create Review</h2>
-    </header>
 
     <section class="form">
       <form action="/classes/<%= classId %>/reviews" method="POST">

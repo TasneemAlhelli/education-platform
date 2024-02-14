@@ -20,5 +20,8 @@
     "nodemailer": "^6.9.9",
     "passport": "^0.7.0",
     "passport-google-oauth": "^2.0.0"
+  },
+  "devDependencies": {
+    "@flydotio/dockerfile": "^0.5.2"
   }
 }

@@ -3,8 +3,10 @@
 body {
   font: 14px;
   font-family: 'Exo 2', sans-serif;
+  background: #f0ecfc;
+  padding: 0%;
+  margin: 0%;
   height: 100vh;
-  background: #eeeeee;
 }
 
 nav {
@@ -13,12 +15,18 @@ nav {
   justify-content: space-between;
   padding: 5px;
   align-items: center;
-  padding: 50px;
+  padding: 10px;
   font: 14px;
+  background-color: #4b526f;
+}
+
+.logoNav {
+  width: 200px;
+  background: transparent;
 }
 
 a {
-  color: #00b7ff;
+  color: #ac89ae;
 }
 
 #onboarding {
@@ -32,30 +40,21 @@ select {
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  color: #333;
+  color: #4b526f;
   width: 100%;
 }
 
 select:hover {
-  border-color: #999;
-}
-
-button {
-  margin: 10px 0;
+  border-color: #c9c7ea;
 }
 
 button {
   padding: 10px;
   border-radius: 5px;
-  background-color: #3498db;
   color: #fff;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-}
-
-button:hover {
-  background-color: #2980b9;
-  border-color: #2980b9;
+  margin: 10px 0;
 }
 
 #showClass {
@@ -79,7 +78,7 @@ h4.slogan {
 .classInfo {
   background: white;
   padding: 1px 12px;
-  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 5px 2px rgba(172, 137, 174, 0.3);
   border-radius: 5px;
   margin: 19px 0;
 }
@@ -89,11 +88,6 @@ h4.slogan {
   font-weight: bold;
 }
 
-/* .classInfo h2,
-.classInfo h3 {
-  display: inline-block;
-} */
-
 .classInfo .description {
   width: 100%;
 }
@@ -101,7 +95,12 @@ h4.slogan {
 .reviewbuttons {
   display: flex;
   width: 100%;
-  justify-content: flex-end;
+  justify-content: space-around;
+}
+
+.reviewbuttons button {
+  background-color: #ce90ec;
+  border: none;
 }
 
 #flexy {
@@ -112,48 +111,66 @@ h4.slogan {
 .navigationBtn {
   padding: 5px;
   font-size: 20px;
+  color: #f0ecfc;
 }
 
 .btn {
   padding: 5px;
   text-decoration: none;
-  color: gray;
+  color: #f0ecfc;
   height: 100%;
   font-size: 20px;
 }
 
 .btn:hover {
-  color: black;
-  border-bottom: solid black 2px;
+  color: #c9c7ea;
+  border-bottom: solid #c9c7ea 2px;
 }
 
-.logoNav {
-  width: 200px;
-  margin-right: 20px;
-  background: transparent;
+footer {
   height: 50px;
+  padding-top: 5px;
+  text-align: center;
+  color: #f2e2c4;
+  background-color: #4b526f;
+  bottom: 0;
+  position: fixed;
+  width: 100%;
 }
 
-.homeNav {
-  padding: 0px;
+.students h3 {
+  color: #4b526f;
+  font-size: 25px;
 }
 
 .wrapContent {
   height: 500px;
-  background-image: url('../images/homepageApple.jpg');
+}
+
+.headerImg {
+  background-image: url('../images/mainBoard.png');
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100%;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(6, 1fr);
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  height: 50%;
 }
 
 .motto {
-  grid-area: 2 / 2 / 6 / 6;
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
   font-size: 30px;
+  justify-content: center;
+  width: 80%;
+}
+
+.motto p {
+  font-size: 16px;
 }
 
 .wrapClasses {
@@ -162,8 +179,8 @@ h4.slogan {
 
 .gridClasses {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
 }
 
 .classImg > img {
@@ -185,13 +202,12 @@ ul.class-items > li.item {
   padding: 20px;
   background: #fff;
   border-radius: 5px;
-  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 5px 2px rgba(172, 137, 174, 0.3);
 }
 
 ul.class-items > li.item > .task {
   display: flex;
   align-items: center;
-  width: 240px;
   justify-content: space-between;
   width: 85%;
 }
@@ -213,12 +229,12 @@ ul.class-items > li.item > .task > .task-content {
 }
 
 ul.class-items > li.item > .task > .task-content > .name {
-  width: 180px;
   height: 25px;
   border-radius: 5px * 3;
   margin-bottom: 8px;
   font-weight: bold !important;
   font-size: 20px !important;
+  color: #4b526f;
 }
 
 ul.class-items > li.item > .task > .description {
@@ -240,7 +256,7 @@ ul.class-items > li.item > .viewBtn {
 }
 
 ul.class-items > li.item > .viewBtn > form > .view {
-  background-color: #3498db;
+  background-color: #ce90ec;
   color: #ffffff;
   padding: 8px 16px;
   border: none;
@@ -260,11 +276,19 @@ ul.class-items > li.item > .viewBtn > .view:last-child {
   align-items: center;
 }
 
+.edit {
+  background-color: #4b526f !important;
+}
+
+.delete {
+  background-color: #b05d75 !important;
+}
+
 .createLink {
   text-decoration: none;
   color: #ffffff;
   padding: 8px 16px;
-  background-color: #3498db;
+  background-color: #ac89ae;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
@@ -278,6 +302,7 @@ h2 {
   margin: 0 auto;
   width: 500px;
   text-align: center;
+  color: #b05d75;
 }
 
 #backBtn {
@@ -286,11 +311,11 @@ h2 {
   text-decoration: none;
 }
 
-#backBtnReview {
+/* #backBtnReview {
   position: absolute;
   left: 0.5%;
   text-decoration: none;
-}
+} */
 
 header {
   height: 80px;
@@ -322,6 +347,7 @@ header {
 .formgroup select,
 .formgroup textarea {
   display: block;
+  margin-bottom: 7px;
 }
 
 .formgroup label {
@@ -335,42 +361,44 @@ header {
 .formgroup textarea {
   width: 100%;
   border: none;
-  border-radius: 20px;
+  border-radius: 10px;
   outline: none;
   padding: 10px;
   font-family: 'Sniglet', cursive;
   font-size: 1em;
   color: #676767;
   transition: border 0.5s;
-  border: solid 3px #98d4f3;
+  border: solid 3px rgba(172, 137, 174, 0.3);
   box-sizing: border-box;
+  /* box-shadow: 0 0 5px 2px rgba(172, 137, 174, 0.3); */
 }
 
 .formgroup input:focus,
 .formgroup select:focus,
 .formgroup textarea:focus {
-  border: solid 3px #3498db;
+  border: solid 3px #b05d75;
 }
 
 .formgroup input:hover,
 .formgroup select:hover,
 .formgroup textarea:hover {
-  border: solid 3px #3498db;
+  border: solid 3px #b05d75;
 }
 
 #submit,
 .editLink {
-  background-color: green;
+  background-color: #ce90ec;
   color: #ffffff;
   height: 50px;
   cursor: pointer;
   margin-top: 30px;
+  margin-bottom: 70px;
   font-size: 1.29em;
   transition: background-color 0.3s ease-in-out;
   border-radius: 4px;
   cursor: pointer;
   padding: 8px 16px;
-  border: black 2px solid;
+  border: none;
 }
 
 .editLink {
@@ -446,7 +474,7 @@ header {
   border-radius: 5px;
   background-color: white;
   margin: 20px;
-  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 5px 2px rgba(172, 137, 174, 0.3);
   padding: 1px;
 }
 

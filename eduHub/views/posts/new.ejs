@@ -1,10 +1,28 @@
 <%- include('../partials/header') %>
-  <form action="/classes/<%= classId %>/newPost" method="POST">
-    <label for="heading">Title: </label><br><input type="text" name="heading" placeholder="Post Title">
-    <p></p>
-    <label for="massage">Message: </label><br><textarea name="message" rows="4" cols="50"
-      placeholder="Post Description"></textarea>
-    <p></p>
-    <button type="submit">Post</button>
-  </form>
+<header>
+  <a href="/classes/<%= classId %>" id="backBtn">
+    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+    Back</a>
+  <h2>Create Post</h2>
+</header>
+<main id="reviewForm">
+  <section class="form">
+    <form action="/classes/<%= classId %>/newPost" method="POST">
+      <div class="formgroup">
+        <label for="heading">Title: </label>
+        <br>
+        <input type="text" name="heading" placeholder="Post Title">
+      </div>
+      <br>
+      <div class="formgroup">
+        <label for="massage">Message: </label>
+        <textarea name="message" rows="4" cols="50"
+          placeholder="Post Description">
+        </textarea>
+      </div>
+      <br>
+      <button id="submit" type="submit">Post</button>
+    </form>
+  </section>
+</main>
   <%- include('../partials/footer') %>
