@@ -17,23 +17,26 @@
 					    <div class="description">
                 <%= classDetails.description %>
               </div>
+              <div class="rating">
+                <p>
+                  <% 
+                  let classReview = classReviews.find((review) =>
+                  review._id.equals(classDetails._id))
+                  classReview = classReview ? classReview.avgRating : null
+      
+                  if (classReview !== null) {
+                    for (let i = 1; i <= 5; i++) {  
+                      if (i <= classReview) { %>
+                        <span class="fa fa-star checked"></span>
+                    <% } else { %>
+                      <span class="fa fa-star"></span>
+                    <% }}      
+                  } %> 
+                </p>
+              </div>
             </div>
           </div>
-          <p>
-            <% 
-            let classReview = classReviews.find((review) =>
-            review._id.equals(classDetails._id))
-            classReview = classReview ? classReview.avgRating : null
-
-            if (classReview !== null) {
-              for (let i = 1; i <= 5; i++) {  
-                if (i <= classReview) { %>
-                  <span class="fa fa-star checked"></span>
-              <% } else { %>
-                <span class="fa fa-star"></span>
-              <% }}      
-            } %> 
-          </p>
+          
           <div class="viewBtn">
             <% if(user && user.role == 'student' && !classDetails.student.includes(user._id.toString())){ %>
               <form method="POST" action="/users/<%= classDetails._id %>/enroll">
@@ -71,24 +74,25 @@
               <div class="description">
                 <%= classDetails.description %>
               </div>
+              <div class="rating">
+                <p>
+                  <% 
+                  let classReview = classReviews.find((review) =>
+                  review._id.equals(classDetails._id))
+                  classReview = classReview ? classReview.avgRating : null
+      
+                  if (classReview !== null) {
+                    for (let i = 1; i <= 5; i++) {  
+                      if (i <= classReview) { %>
+                        <span class="fa fa-star checked"></span>
+                    <% } else { %>
+                      <span class="fa fa-star"></span>
+                    <% }}      
+                  } %> 
+                </p>
+              </div>
             </div>
           </div>
-          <p>
-          <% 
-          let classReview = classReviews.find((review) =>
-          review._id.equals(classDetails._id))
-          classReview = classReview ? classReview.avgRating : null
-
-          if (classReview !== null) {
-            for (let i = 1; i <= 5; i++) {  
-              if (i <= classReview) { %>
-                <span class="fa fa-star checked"></span>
-            <% } else { %>
-              <span class="fa fa-star"></span>
-            <% }
-            }   
-          } %> 
-          </p>
             <div class="viewBtn">
               <form method="GET" action="/classes/<%= classDetails._id %>">
                 <button class="view" type="submit">View</button>
@@ -116,6 +120,25 @@
                 <div class="description" >
                   <%= classDetails.description %>
                 </div>
+
+                <div class="rating">
+                <p>
+                  <% 
+                  let classReview = classReviews.find((review) =>
+                  review._id.equals(classDetails._id))
+                  classReview = classReview ? classReview.avgRating : null
+      
+                  if (classReview !== null) {
+                    for (let i = 1; i <= 5; i++) {  
+                      if (i <= classReview) { %>
+                        <span class="fa fa-star checked"></span>
+                    <% } else { %>
+                      <span class="fa fa-star"></span>
+                    <% }}      
+                  } %> 
+                </p>
+              </div>
+
               </div>
             </div>
   
