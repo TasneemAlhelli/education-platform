@@ -285,8 +285,7 @@ ul.class-items > li.item > .viewBtn > .view:last-child {
   justify-content: space-between;
   align-items: center;
 }
-
-.edit {
+x .edit {
   background-color: #4b526f !important;
 }
 
