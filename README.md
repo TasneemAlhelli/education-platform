@@ -67,29 +67,59 @@ echo .env >> .gitignore
 
 #### Home page:
 
+![Image](https://i.ibb.co/L5qQCKb/home-page.png)
+
 This is the home page. It introduces the website and shows the featured classes that have the most registered students.
 
 #### View All Classes:
+
+![Image](https://i.ibb.co/KF13prw/all-classes.png)
+
+##### Student View
+
+![Image](https://i.ibb.co/kM4CX2P/view-all-classes-student.png)
 
 This is the View All Classes page. It shows all classes on the platform that were created by the teacher, and the user can view the details of the class by clicking on the view button. Also, if the user is a student, an enroll button will be shown for him if he is not enrolled in that class.
 
 #### View my Classes:
 
+##### Student View
+
+![Image](https://i.ibb.co/cTw7Bfy/view-my-classes-student.png)
+
+##### Teacher View
+
+![Image](https://i.ibb.co/SrKyS0x/my-classes-teacher-page.png)
+
 This is my classes page. For students, it shows the classes he registered for with a view button to redirect him to the details of the class. For the teacher, it shows the classes he created with three buttons (view, edit, delete); View button: show the details of the class; Edit button: redirect to the edit class form to update the details of the class; Delete button: it will delete the class. Also, there is a create class button that redirects him to the create class form.
 
 #### Show class:
+
+##### Student View
+
+![Image](https://i.ibb.co/4FbTN70/show-class-student.png)
+
+##### Teacher View
+
+![Image](https://i.ibb.co/cxB5wKB/show-class-teacher.png)
 
 This is the show class page. For students, it shows the details of the class. Also, he was able to see the posts that the teacher created and those of his classmates. For teachers, it shows the details of the class and registered students. In addition, he is able to create posts and see them.
 
 #### Create Class:
 
+![Image](https://i.ibb.co/64XR2ys/create-class-page.png)
+
 This is the class page. It shows a create class form that the teacher can fill in with inputs and click on the create button to create a class.
 
 #### view reviews:
 
+![Image](https://i.ibb.co/MVF0HcD/reviews.png)
+
 This is the review page. It shows the reviews of registered students for a specific class.
 
 #### Contact us:
+
+![Image](https://i.ibb.co/ZSYp3TM/contact-us.png)
 
 This is the contact us page. It shows a contact form that the user can use to send a message to one of the teachers on the platform.
 
