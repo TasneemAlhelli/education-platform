@@ -18,7 +18,11 @@ const update = async (req, res) => {
 
 const enroll = async (req, res) => {
   try {
-    const classItem = await Class.findById(req.params.classId)
+    const classItem = await Class.findById(req.params.classId).populate(
+      'teacher',
+      'student'
+    )
+
     classItem.student.push(req.user._id)
     await classItem.save()
     res.render('classes/show', { title: 'Classes', classItem, enrolled: true })
