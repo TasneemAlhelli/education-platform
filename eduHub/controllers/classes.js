@@ -120,7 +120,7 @@ const update = async (req, res) => {
     } else {
       req.body.image = classItem.image
     }
-    
+
     await classItem.updateOne(req.body)
     res.redirect('/classes/myclasses')
   } catch (err) {
